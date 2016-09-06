@@ -30,10 +30,8 @@ describe('MergeSorter', function() {
 
     it('should have a list property', function() {
       assert(testSorter.hasOwnProperty('list'), 'mergeSorter does not have a list property');
-      assert(testSorter.list === list, 'mergeSorter did not take our list properly');
+      assert(testSorter.list === testList, 'mergeSorter did not take our list properly');
     })
 
   });
 });
-
-
