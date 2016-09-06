@@ -1,5 +1,7 @@
-function adding(firstNumber, secondNumber) {
-  return firstNumber + secondNumber;
-}
+function mergeSorter(list) {
+  this.list = list;
+};
 
-exports.adding = adding;
+module.exports = {
+  mergeSorter: mergeSorter
+}
