@@ -29,10 +29,20 @@ var breakApart = function(list) {
   debugger;
   if (list.length === 1) {
     return list;
+  } else {
+    // divide the list into two
+    var midPoint = Math.floor(list.length / 2);
+    var leftList = list.slice(0, midPoint);
+    var rightList = list.slice(midPoint);
+
+    var leftBrokenApart = breakApart(leftList);
+    var rightBrokenApart = breakApart(rightList);
+    // break apart the 'left' and the 'right'
+    return [leftBrokenApart, rightBrokenApart];
   }
 }
 
-var testList = [4];
+var testList = [1,2,3,4];
 console.log(breakApart(testList));
 
 // var testList = [4,3,2,1];
