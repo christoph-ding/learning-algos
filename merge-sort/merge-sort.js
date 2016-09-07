@@ -2,6 +2,11 @@ function mergeSorter(list) {
   this.list = list;
 };
 
+mergeSorter.prototype.run = function() {
+  sortedList = this.sortList(this.list);
+  return sortedList;
+}
+
 mergeSorter.prototype.sortList = function(list) {
   
   debugger;
@@ -30,6 +35,8 @@ mergeSorter.prototype.merge = function(leftList, rightList) {
       combinedSortedList.push(leftList.shift());
     } else if (rightList[0] < leftList[0]) {
       combinedSortedList.push(rightList.shift());
+    } else if (rightList[0] === leftList[0]) {
+      combinedSortedList.push(rightList.shift(), leftList.shift());
     }
   }
 
@@ -45,10 +52,6 @@ mergeSorter.prototype.merge = function(leftList, rightList) {
 }
 
 
-var testList = [1, 22, 11, 3, 7, 32];
-var sorter = new mergeSorter(testList);
-console.log(sorter.sortList(sorter.list));
-
-// module.exports = {
-//   mergeSorter: mergeSorter
-// }
+module.exports = {
+  mergeSorter: mergeSorter
+}
