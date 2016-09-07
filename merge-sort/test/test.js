@@ -3,10 +3,6 @@ var mergeSorter = require("../merge-sort.js").mergeSorter;
 
 describe('MergeSorter', function() {
 
-  // test variables
-  var testList = [1,2,3];
-  var testSorter = new mergeSorter(testList); 
-
   // hooks and such
   beforeEach(function() {
     // reset the test variables
@@ -34,26 +30,39 @@ describe('MergeSorter', function() {
     it('should have a list property', function() {
       assert(testSorter.hasOwnProperty('list'), 'mergeSorter does not have a list property');
       assert(testSorter.list === testList, 'mergeSorter did not take our list properly');
-    })
+    });
 
     it('should have a sort method', function() {
       assert('sortList' in testSorter, 'mergeSorter lacks a sorting method');
-    })
+    });
+
+    it('should have a method to break apart the input list', function() {
+      assert('breakApart' in testSorter, 'mergeSorter lacks a way to break lists apart');
+    }); 
+  });
+
+
+  describe('breakApart', function() {
+    
+
+
   });
 
   describe('Merge sort algorithm', function() {
-    it('should return a sorted list of 1 length as itself') {
-      // 
-    };
-    it ('should sort lists properly') {
+    it('should return a sorted list of 1 length as itself', function() {
+      // var testList = [1];
+      // var testSorter = new mergeSorter(testList);
+      // var mergeSorterOutput = testSorter.sortList(testList);
+      // assert(mergeSorterOutput === testList, 'mergeSorter did not return our element')
+    });
+    it('should sort lists properly', function() {
       // provide 3 example lists
-    };
-    it ('should handle negative numbers') {
+    });
+    it('should handle negative numbers', function() {
       //
-    };
-    it ('should handle duplicates') {
-
-    };
-
+    });
+    it('should handle duplicates', function() {
+      //
+    });
   });
 });
