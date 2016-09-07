@@ -41,19 +41,9 @@ describe('MergeSorter', function() {
     }); 
   });
 
-
-  describe('breakApart', function() {
-    
-
-
-  });
-
   describe('Merge sort algorithm', function() {
     it('should return a sorted list of 1 length as itself', function() {
-      // var testList = [1];
-      // var testSorter = new mergeSorter(testList);
-      // var mergeSorterOutput = testSorter.sortList(testList);
-      // assert(mergeSorterOutput === testList, 'mergeSorter did not return our element')
+      //
     });
     it('should sort lists properly', function() {
       // provide 3 example lists
