@@ -3,7 +3,6 @@ var mergeSorter = require("../merge-sort.js").mergeSorter;
 
 describe('MergeSorter', function() {
 
-
   describe('MergeSorter Class', function() {
     // hooks and such
     beforeEach(function() {
