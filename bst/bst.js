@@ -47,18 +47,51 @@ treeNode.prototype.widthSearch = function(trgtValue) {
      queue.push(currentNode.rightChild);
     };
   }
-
   return false;
 }
 
+treeNode.prototype.insert = function(newNode) {
+  // start at the root
+  var currentNode = this;
+
+  debugger;
+
+  while (true) {
+    if (newNode.value === currentNode.value) {
+      return "this node is already in the tree";
+    }
+
+    if (newNode.value < currentNode.value) {
+      // is there a left child?
+      if (currentNode.leftChild) {
+        currentNode = currentNode.leftChild;
+      } else {
+        currentNode.leftChild = newNode;
+        return;
+      }
+    }
+
+    if (newNode.value > currentNode.value) {
+      // is there a right child?
+      if (currentNode.rightChild) {
+        currentNode = currentNode.rightChild;
+      } else {
+        currentNode.rightChild = newNode;
+        return;
+      }
+    }
+  }
+}
 
 // testing
-var value = 10;
-var leftChild = new treeNode(9);
-var rightChild = new treeNode(12);
-var testTree = new treeNode(value, leftChild, rightChild);
+// var value = 10;
+// var leftChild = new treeNode(9);
+// var rightChild = new treeNode(12);
+// var testTree = new treeNode(value, leftChild, rightChild);
 
-testTree.widthSearch(12);
+// var newNode = new treeNode(7);
+
+// testTree.insert(newNode);
 
 module.exports = {
   treeNode: treeNode

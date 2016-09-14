@@ -37,7 +37,15 @@ describe('BinarySearchTree Class', function() {
   });
 
   it('should have a search by depth method', function() {
-    assert('searchDepth' in this.testTree, 'tree should be searchable');
+    assert('searchDepth' in this.testTree, 'tree should be searchable by depth');
+  });
+
+  it('should have a search by width method', function() {
+    assert('widthSearch' in this.testTree, 'tree should be searchable by width');
+  });
+
+  it('should have an insertion method', function() {
+    assert('insert' in this.testTree, 'tree should have insertion method');
   });
 
 });
@@ -66,6 +74,44 @@ describe('Searching', function() {
   it('Search width should return true if node is not in tree', function() {
     assert(this.testTree.widthSearch(12) === true, '12 should be found')
   });
-
-
 });
+
+describe('Insertion', function() {
+  // hooks and such
+  beforeEach(function() {
+    var value = 10;
+    this.leftChild = new treeNode(6);
+    this.rightChild = new treeNode(12);
+    this.testTree = new treeNode(value, this.leftChild, this.rightChild);
+  });
+
+  it('Insertion should work with multiple examples', function() {
+    var newNode = new treeNode(13);
+    this.testTree.insert(newNode);
+
+    assert(this.testTree.rightChild.rightChild.value === 13, '13 was not inserted correctly');
+  });
+
+  it('Insertion should work with multiple examples', function() {
+    var newNode = new treeNode(4);
+    this.testTree.insert(newNode);
+
+    assert(this.testTree.leftChild.leftChild.value === 4, '4 was not inserted correctly');
+  });
+
+  it('Insertion should work with multiple examples', function() {
+    var newNode = new treeNode(9);
+    this.testTree.insert(newNode);
+
+    assert(this.testTree.leftChild.rightChild.value === 9, '9 was not inserted correctly');
+  });
+
+  it('Insertion should not insert duplicates', function() {
+    var newNode = new treeNode(6);
+    
+    assert(this.testTree.insert(newNode) === "this node is already in the tree", 'a duplicate was inserted');
+  });
+
+
+})
+
