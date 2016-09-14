@@ -51,12 +51,21 @@ describe('Searching', function() {
     this.testTree = new treeNode(value, this.leftChild, this.rightChild);
   });
 
-  it('should return false if node is not in tree', function() {
+  it('Search depth should return false if node is not in tree', function() {
     assert(this.testTree.searchDepth(3) === false, '3 should not be found')
   });
 
-  it('should return true if node is in tree', function() {
-    
-  })
-    // assert(this.testTree.searchDepth(3) === false, '3 should not be found')
+  it('Search depth should return true if node is in tree', function() {
+    assert(this.testTree.searchDepth(12) === true, '12 should not be found')
+  });
+
+  it('Search width should return false if node is not in tree', function() {
+    assert(this.testTree.widthSearch(3) === false, '3 should not be found')
+  });
+
+  it('Search width should return true if node is not in tree', function() {
+    assert(this.testTree.widthSearch(12) === true, '12 should be found')
+  });
+
+
 });

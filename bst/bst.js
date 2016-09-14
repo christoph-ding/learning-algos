@@ -22,12 +22,44 @@ treeNode.prototype.searchDepth = function(trgtValue, currentNode) {
   if (currentNode.value === trgtValue) {
     return true;
   }
-
   // not found
   return false;
 }
 
+treeNode.prototype.widthSearch = function(trgtValue) {
+  // I should implement an actual queue class
+  var queue = [this];
+
+  while (queue.length) {
+    var currentNode = queue.shift();
+    
+    // check
+    if (currentNode.value === trgtValue) {
+      return true;
+    };
+
+    // add child nodes to queue
+    if (currentNode.leftChild) {
+      queue.push(currentNode.leftChild);
+    };
+
+    if (currentNode.rightChild) {
+     queue.push(currentNode.rightChild);
+    };
+  }
+
+  return false;
+}
+
+
 // testing
+var value = 10;
+var leftChild = new treeNode(9);
+var rightChild = new treeNode(12);
+var testTree = new treeNode(value, leftChild, rightChild);
+
+testTree.widthSearch(12);
+
 module.exports = {
   treeNode: treeNode
 }
