@@ -2,7 +2,7 @@ var treeNode = function(value, leftChild, rightChild) {
   this.value = value;
   this.leftChild = leftChild;
   this.rightChild = rightChild;
-}
+};
 
 // operations:
 
@@ -24,7 +24,7 @@ treeNode.prototype.searchDepth = function(trgtValue, currentNode) {
   }
   // not found
   return false;
-}
+};
 
 treeNode.prototype.widthSearch = function(trgtValue) {
   // I should implement an actual queue class
@@ -54,8 +54,6 @@ treeNode.prototype.insert = function(newNode) {
   // start at the root
   var currentNode = this;
 
-  debugger;
-
   while (true) {
     if (newNode.value === currentNode.value) {
       return "this node is already in the tree";
@@ -81,17 +79,11 @@ treeNode.prototype.insert = function(newNode) {
       }
     }
   }
-}
+};
 
-// testing
-// var value = 10;
-// var leftChild = new treeNode(9);
-// var rightChild = new treeNode(12);
-// var testTree = new treeNode(value, leftChild, rightChild);
+treeNode.prototype.delete = function(trgtValue) {
 
-// var newNode = new treeNode(7);
-
-// testTree.insert(newNode);
+};
 
 module.exports = {
   treeNode: treeNode

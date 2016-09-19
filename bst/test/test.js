@@ -111,7 +111,9 @@ describe('Insertion', function() {
     
     assert(this.testTree.insert(newNode) === "this node is already in the tree", 'a duplicate was inserted');
   });
+});
 
-
-})
+describe('Delete', function() {
+  // hooks and such
+});
 
