@@ -22,8 +22,8 @@ describe('AddingMachine Class', function() {
   });
 
   it('should have a string number', function() {
-    assert('numberString' in this.addingMachine, 'addingMachine does NOT have a numbstring');
+    assert('numString' in this.addingMachine, 'addingMachine does NOT have a numbstring');
   })
 
+  // it('should have a method that checks if the string is additive')
 });
-
