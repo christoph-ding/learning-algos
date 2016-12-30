@@ -47,7 +47,3 @@ def deriveNext(n):
 
 def getDigit(n, place):
     return n // 10**place % 10
-
-testNum = 4
-answer = calcSeeAndSay(testNum)
-print(answer)
