@@ -1,22 +1,45 @@
-// the implementation of a stack
-function Stack() {
+// two implementations of a stack
+
+// Linked List implementation
+function StackLL() {
 
 }
 
-Stack.prototype.push = function() {
+StackLL.prototype.push = function() {
 
 }
 
-Stack.prototype.pop = function() {
+StackLL.prototype.pop = function() {
 
 }
 
-Stack.prototype.peek = function() {
+StackLL.prototype.peek = function() {
 
 }
 
-Stack.prototype.isEmpty = function() {
+StackLL.prototype.isEmpty = function() {
 
 }
 
-var test = new Stack();
+// Array implementation
+function StackArray() {
+
+}
+
+StackArray.prototype.push = function() {
+
+}
+
+StackArray.prototype.pop = function() {
+
+}
+
+StackArray.prototype.peek = function() {
+
+}
+
+StackArray.prototype.isEmpty = function() {
+
+}
+
+// Basic Tests
