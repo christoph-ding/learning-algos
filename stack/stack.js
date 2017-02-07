@@ -41,39 +41,50 @@ StackLL.prototype.isEmpty = function() {
 
 // Array implementation
 function StackArray() {
-
+  this.data = [];
+  this.topIndex = 0;
 }
 
-StackArray.prototype.push = function() {
-
+StackArray.prototype.push = function(val) {
+  this.topIndex++;
+  this.data[topIndex] = val;
 }
 
 StackArray.prototype.pop = function() {
-
+  var topValue = this.data[this.topIndex];
+  this.topIndex--;
+  return topValue;
 }
 
 StackArray.prototype.peek = function() {
-
+  return this.data[this.topIndex];
 }
 
 StackArray.prototype.isEmpty = function() {
-
+  return this.data[this.topIndex] === null;
 }
 
+// Basic Tests for Array stack
+
+
+
+
+
 // Basic Tests for LL stack
-var testStackLL = new StackLL
-var nodeOne = new stackNode(1);
-var nodeTwo = new stackNode(2);
-var nodeThree = new stackNode(3);
 
-console.log('empty at start: ', testStackLL.isEmpty())
+// var testStackLL = new StackLL
+// var nodeOne = new stackNode(1);
+// var nodeTwo = new stackNode(2);
+// var nodeThree = new stackNode(3);
 
-testStackLL.push(nodeOne);
-testStackLL.push(nodeTwo);
-testStackLL.push(nodeThree);
+// console.log('empty at start: ', testStackLL.isEmpty())
 
-console.log(testStackLL.pop());
-console.log(testStackLL.pop());
-console.log(testStackLL.pop());
-console.log(testStackLL.pop());
-console.log(testStackLL);
+// testStackLL.push(nodeOne);
+// testStackLL.push(nodeTwo);
+// testStackLL.push(nodeThree);
+
+// console.log(testStackLL.pop());
+// console.log(testStackLL.pop());
+// console.log(testStackLL.pop());
+// console.log(testStackLL.pop());
+// console.log(testStackLL);
