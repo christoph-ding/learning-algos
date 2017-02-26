@@ -1,25 +1,40 @@
 class MinStack(object):
 
     def __init__(self):
-        self.stack = []
-        self.minStack = []
+        self.stack = [];
+        self.minStack = [];
 
-    def push(self, x):
-        self.stack.append(x)
-        if len(self.minStack) == 0 or x <= self.getMin():
-            self.minStack.append(x)
-        else: 
-            self.minStack.insert(0, x)
-        
+    def push(self, val):
+        # determine if the new value is a new minimum
+        if len(self.minStack):
+            newMin = min(val, self.getMin())        
+        else:
+            newMin = val
+
+        # push new value and new min to both staks
+        self.stack.append(val)
+        self.minStack.append(newMin)
+
     def pop(self):
-        if self.top() == self.getMin():
-            self.minStack.pop()
+        # pop from the min stack to maintain two stack sizes
+        self.minStack.pop()
         return self.stack.pop()
 
     def top(self):
-        if len(self.stack) > 0:
-            return self.stack[-1]
+        topValue = self.stack[-1]
+        return topValue
 
     def getMin(self):
-        if len(self.minStack) > 0:
-            return self.minStack[-1]
+        # if there is a current min, return that
+        currentMin = self.minStack[-1]
+        return currentMin
+
+# testing
+testOne = MinStack();
+testOne.push(10)
+testOne.push(21)
+testOne.push(3)
+print(testOne.getMin()) # 3
+testOne.push(1)
+print(testOne.getMin()) # 1
+testOne.pop() 
