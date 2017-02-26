@@ -26,11 +26,14 @@ class MinStack(object):
 
     def getMin(self):
         # if there is a current min, return that
-        currentMin = self.minStack[-1]
-        return currentMin
+        if len(self.minStack):
+            return self.minStack[-1]
+        else:
+            return None
 
 # testing
-testOne = MinStack();
+testOne = MinStack()
+print(testOne.getMin())
 testOne.push(10)
 testOne.push(21)
 testOne.push(3)
@@ -38,3 +41,12 @@ print(testOne.getMin()) # 3
 testOne.push(1)
 print(testOne.getMin()) # 1
 testOne.pop() 
+print(testOne.getMin()) # 3
+testOne.pop()
+print(testOne.getMin()) # 10
+testOne.pop()
+print(testOne.getMin()) # 10
+testOne.pop()
+print(testOne.getMin()) # None
+
+
