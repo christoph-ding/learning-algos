@@ -63,28 +63,3 @@ StackArray.prototype.peek = function() {
 StackArray.prototype.isEmpty = function() {
   return this.data[this.topIndex] === null;
 }
-
-// Basic Tests for Array stack
-
-
-
-
-
-// Basic Tests for LL stack
-
-// var testStackLL = new StackLL
-// var nodeOne = new stackNode(1);
-// var nodeTwo = new stackNode(2);
-// var nodeThree = new stackNode(3);
-
-// console.log('empty at start: ', testStackLL.isEmpty())
-
-// testStackLL.push(nodeOne);
-// testStackLL.push(nodeTwo);
-// testStackLL.push(nodeThree);
-
-// console.log(testStackLL.pop());
-// console.log(testStackLL.pop());
-// console.log(testStackLL.pop());
-// console.log(testStackLL.pop());
-// console.log(testStackLL);

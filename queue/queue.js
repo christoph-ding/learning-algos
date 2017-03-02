@@ -63,7 +63,7 @@ QueueArray.prototype.peek = function() {
 QueueArray.prototype.isEmpty = function() {
 
 }
-// Basic Tests
+// Basic Tests for LL
 var nodeOne = new stackNode(3);
 var nodeTwo = new stackNode(4);
 var nodeFour = new stackNode(6);
