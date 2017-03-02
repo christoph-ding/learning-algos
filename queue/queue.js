@@ -77,7 +77,15 @@ var queueOneLL = new QueueLL();
 queueOneLL.enqueue(nodeOne);
 queueOneLL.enqueue(nodeTwo);
 queueOneLL.enqueue(nodeFour);
-console.log(queueOneLL.dequeue());
-console.log(queueOneLL.dequeue());
 
+console.log(queueOneLL.dequeue());
+console.log(queueOneLL.dequeue());
 console.log(queueOneLL);
+
+// Basic Tests for Array
+var queueWithArray = new QueueArray();
+queueWithArray.enqueue(4);
+queueWithArray.enqueue(5);
+queueWithArray.enqueue(6);
+
+console.log(queueWithArray);
