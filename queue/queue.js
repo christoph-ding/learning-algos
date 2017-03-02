@@ -45,23 +45,28 @@ QueueLL.prototype.isEmpty = function() {
 
 // Array implementation
 function QueueArray() {
-
+  this.Q = [];
+  this.frontOfQ = 0;
+  this.backOfQ = 0;
 }
 
-QueueArray.prototype.push = function() {
-
+QueueArray.prototype.enqueue = function(val) {
+  this.Q[this.backOfQ] = val;
+  this.backOfQ = this.backOfQ + 1;
 }
 
-QueueArray.prototype.pop = function() {
-
+QueueArray.prototype.dequeue = function() {
+  var dequeued = this.frontOfQ[this.frontOfQ];
+  this.frontOfQ = this.frontOfQ + 1;
+  return dequeued;
 }
 
 QueueArray.prototype.peek = function() {
-
+  return this.Q[this.frontOfQ];
 }
 
 QueueArray.prototype.isEmpty = function() {
-
+  return this.frontOfQ === this.backOfQ;
 }
 // Basic Tests for LL
 var nodeOne = new stackNode(3);
