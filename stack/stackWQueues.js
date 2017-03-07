@@ -40,3 +40,34 @@ console.log(testStackOne.pop());
 testStackOne.push(4);
 console.log(testStackOne.pop());
 console.log(testStackOne.pop());
+
+// a stack using queues
+// implement using a slow push
+function stackWQueuesSlowPush() {
+  this.Q1 = [];
+  this.Q2 = [];
+  this.mainQ = this.Q1;
+  this.secondQ = this.Q2;
+}
+
+stackWQueuesSlowPush.prototype.transferBetweenStacks = function() {
+  while (this.secondQ.length > 0) {
+    this.mainQ.push(this.mainQ.shift());
+  }
+  var temp = this.mainQ;
+  this.mainQ = this.secondQ;
+  this.secondQ = temp;
+}
+
+stackWQueuesSlowPush.prototype.push = function(val) {  
+  this.mainQ.push(val);
+  this.transferBetweenStacks();
+}
+
+stackWQueuesSlowPush.prototype.pop = function() {
+  return this.secondQ.shift();
+}
+
+stackWQueuesSlowPush.prototype.isEmpty = function() {
+  return this.secondQ.length + this.mainQ.length === 0;
+}
