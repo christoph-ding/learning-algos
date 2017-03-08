@@ -31,15 +31,15 @@ stackWQueuesSlowPop.prototype.isEmpty = function() {
 }
 
 // tests
-var testStackOne = new stackWQueuesSlowPop();
-testStackOne.push(1);
-testStackOne.push(2);
-testStackOne.push(3);
-console.log(testStackOne.pop());
-console.log(testStackOne.pop());
-testStackOne.push(4);
-console.log(testStackOne.pop());
-console.log(testStackOne.pop());
+// var testStackOne = new stackWQueuesSlowPop();
+// testStackOne.push(1);
+// testStackOne.push(2);
+// testStackOne.push(3);
+// console.log(testStackOne.pop());
+// console.log(testStackOne.pop());
+// testStackOne.push(4);
+// console.log(testStackOne.pop());
+// console.log(testStackOne.pop());
 
 // a stack using queues
 // implement using a slow push
@@ -52,7 +52,7 @@ function stackWQueuesSlowPush() {
 
 stackWQueuesSlowPush.prototype.transferBetweenStacks = function() {
   while (this.secondQ.length > 0) {
-    this.mainQ.push(this.mainQ.shift());
+    this.mainQ.push(this.secondQ.shift());
   }
   var temp = this.mainQ;
   this.mainQ = this.secondQ;
@@ -71,3 +71,14 @@ stackWQueuesSlowPush.prototype.pop = function() {
 stackWQueuesSlowPush.prototype.isEmpty = function() {
   return this.secondQ.length + this.mainQ.length === 0;
 }
+
+// tests
+var testStackTwo = new stackWQueuesSlowPush();
+testStackTwo.push(1);
+testStackTwo.push(2);
+console.log(testStackTwo.pop());
+testStackTwo.push(3);
+console.log(testStackTwo.pop());
+console.log(testStackTwo.pop());
+
+console.log(testStackTwo)
