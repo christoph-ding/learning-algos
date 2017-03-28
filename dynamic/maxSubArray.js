@@ -1,4 +1,8 @@
 function maxSubArray(numberList) {
+  if (numberList.length === 0) {
+    return 'no sum available';
+  }
+
   // we use a helper queue
   var helper = [];
 
@@ -18,10 +22,15 @@ function maxSubArray(numberList) {
     helper.push(numberToAddToHelper);
   }
 
-
-
   // go through the helper queue and find the max
-
+  var max = helper[0];
+  for (var i = 1; i < helper.length; i++) {
+    var currentNumber = helper[i];
+    if (currentNumber > max) {
+      max = currentNumber;
+    }
+  }
+  return max;
 }
 
 // tests
@@ -29,3 +38,7 @@ var listOne = [-1, 5, 4, -2, 10, -1];
 var listTwo = [-10, 23, 100, -30, 24, 93, 1, -9, 23, -4, 11];
 
 var maxOne = maxSubArray(listOne);
+var maxTwo = maxSubArray(listTwo);
+
+console.log(maxOne);
+console.log(maxTwo);
