@@ -3,15 +3,27 @@ function permutations (input) {
 
   for (var i = 0; i < input.length; i++) {
     var currentElem = input[i]
-    var restOfElem = input.splice()
+    var restOfElem = getRestOfList(i, input.slice())
 
+    console.log(restOfElem)
+
+    var comboesOfRest = permutations(restOfElem)
+
+
+    for (var j = 0; j < comboesOfRest.length; j++) {
+      var totalCombo = currentElem + comboesOfRest[j]
+
+      output.push(totalCombo)
+    }
   }
-  return output
+  return output;
+}
+
+function getRestOfList(index, list) {
+  var restOfList = list.slice(0, index).concat(list.slice(index + 1))
+  return restOfList
 }
 
 // test cases
 var listOne = [1,2,3]
-// permutationsOne = permutations(listOne)
-// console.log(permutations)
-
-console.log(listOne.slice(0,1).concat(listOne.slice(1)))
+console.log(permutations(listOne))
