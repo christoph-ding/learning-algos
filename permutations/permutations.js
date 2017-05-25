@@ -5,16 +5,14 @@ function permutations (input) {
     var currentElem = input[i]
     var restOfElem = getRestOfList(i, input.slice())
 
-    console.log(restOfElem)
-
     var comboesOfRest = permutations(restOfElem)
 
-
     for (var j = 0; j < comboesOfRest.length; j++) {
-      var totalCombo = currentElem + comboesOfRest[j]
+      var totalCombo = String(currentElem) + String(comboesOfRest[j])
 
       output.push(totalCombo)
     }
+    output.push(String(currentElem));
   }
   return output;
 }
