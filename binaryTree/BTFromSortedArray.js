@@ -7,7 +7,7 @@ function treeNode(val, lc, rc, parent) {
 
 
 function BST() {
-
+  
 }
 
 function BTFromSortedArray(input) {
