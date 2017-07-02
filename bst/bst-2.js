@@ -17,7 +17,6 @@ BinarySearchTree.prototype.insert = function(newNode) {
   
   function _insertion() {
     // insert based upon comparsion
-
     // no children
     if (!currentNode.lc && !currentNode.rc) {
       if (newNode.value < currentNode.value) {
@@ -27,14 +26,27 @@ BinarySearchTree.prototype.insert = function(newNode) {
       }
     }
     // has children
-      // compare ...
-        // insert left
-        // insert right
+    else {
+      if (newNode.value < currentNode.value) {
+        if (!currentNode.lc) {
+          currentNode.lc = newNode
+        } else {
+          currentNode = currentNode.lc          
+        }
+      } else if (newNode.value > currentNode.value) {
+          if (!currentNode.rc) {
+            currentNode.rc = newNode
+          } else {
+          currentNode = currentNode.rc
+        }
+      }
+      _insertion()
+    }
   }
 
-  function _compareAndInsert(value) {
+  // function _compareAndInsert(value) {
 
-  }
+  // }
 
   _insertion()
 
@@ -69,5 +81,9 @@ var nodeOne = new Node(8)
 var BSTOne = new BinarySearchTree(nodeOne)
 
 var newNode = new Node(11)
+var newNodeTwo = new Node(7)
+var newNodeThree = new Node(3)
+
 BSTOne.insert(newNode)
-console.log(BSTOne)
+BSTOne.insert(newNodeTwo)
+BSTOne.insert(newNodeThree)
