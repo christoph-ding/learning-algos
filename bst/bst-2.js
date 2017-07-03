@@ -44,10 +44,6 @@ BinarySearchTree.prototype.insert = function(newNode) {
     }
   }
 
-  // function _compareAndInsert(value) {
-
-  // }
-
   _insertion()
 
 }
@@ -56,7 +52,19 @@ BinarySearchTree.prototype.contains = function() {
 
 }
 
-BinarySearchTree.prototype.depthFirstTraversal = function() {
+BinarySearchTree.prototype.preOrderTraversal = function() {
+
+}
+
+BinarySearchTree.prototype.inOrderTraversal = function() {
+
+}
+
+BinarySearchTree.prototype.postOrderTraversal = function() {
+
+}
+
+BinarySearchTree.prototype.widthFirstTraversal = function() {
 
 }
 
