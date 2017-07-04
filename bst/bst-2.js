@@ -53,8 +53,22 @@ BinarySearchTree.prototype.contains = function() {
 
 }
 
-BinarySearchTree.prototype.preOrderTraversal = function() {
+BinarySearchTree.prototype.preOrderTraversal = function(cb) {
 
+  function _traverse(root) {
+    cb(root)
+
+    if (root.lc) {
+      _traverse(root.lc)
+    }
+
+    if (root.rc) {
+      _traverse(root.rc)
+    }
+
+  }
+
+  _traverse(this.root, cb)
 }
 
 BinarySearchTree.prototype.inOrderTraversal = function() {
