@@ -54,29 +54,45 @@ BinarySearchTree.prototype.contains = function() {
 }
 
 BinarySearchTree.prototype.preOrderTraversal = function(cb) {
+  _traverse(this.root)
 
   function _traverse(root) {
     cb(root)
-
     if (root.lc) {
       _traverse(root.lc)
     }
-
     if (root.rc) {
       _traverse(root.rc)
     }
-
   }
-
-  _traverse(this.root, cb)
 }
 
-BinarySearchTree.prototype.inOrderTraversal = function() {
+BinarySearchTree.prototype.inOrderTraversal = function(cb) {
+  _traverse(this.root)
 
+  function _traverse(root) {
+    if (root.lc) {
+      _traverse(root.lc)
+    }    
+    cb(root)
+    if (root.rc) {
+      _traverse(root.rc)
+    }
+  }
 }
 
-BinarySearchTree.prototype.postOrderTraversal = function() {
+BinarySearchTree.prototype.postOrderTraversal = function(cb) {
+  _traverse(this.root)
 
+  function _traverse(root) {
+    if (root.lc) {
+      _traverse(root.lc)
+    }        
+    if (root.rc) {
+      _traverse(root.rc)
+    }
+    cb(root)
+  }
 }
 
 BinarySearchTree.prototype.widthFirstTraversal = function() {
