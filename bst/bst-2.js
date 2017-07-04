@@ -5,7 +5,7 @@ var BinarySearchTree = function(root) {
 
 var Node = function(value, lc, rc) {
   // number
-  this.value = value
+  this.value  = value
   // Nodes
   this.lc = lc
   this.rc = rc
@@ -15,33 +15,34 @@ BinarySearchTree.prototype.insert = function(newNode) {
 
   var currentNode = this.root
   
-  function _insertion() {
-    // insert based upon comparsion
-    // no children
-    if (!currentNode.lc && !currentNode.rc) {
-      if (newNode.value < currentNode.value) {
-        currentNode.lc = newNode
-      } else if (newNode.value > currentNode.value) {
-        currentNode.rc = newNode
-      }
-    }
-    // has children
-    else {
-      if (newNode.value < currentNode.value) {
-        if (!currentNode.lc) {
-          currentNode.lc = newNode
-        } else {
-          currentNode = currentNode.lc          
-        }
-      } else if (newNode.value > currentNode.value) {
-          if (!currentNode.rc) {
-            currentNode.rc = newNode
-          } else {
-          currentNode = currentNode.rc
-        }
-      }
+  function _handleSmaller() {
+    if (!currentNode.lc) {
+      currentNode.lc = newNode
+    } else {
+      currentNode = currentNode.lc
+      // recur if necceary
       _insertion()
     }
+  }
+
+  function _handleLarger() {
+    if (!currentNode.rc) {
+      currentNode.rc = newNode
+    } else {
+      currentNode = currentNode.rc
+      // recur if necceary
+      _insertion()
+    }
+  }
+
+  function _insertion() {
+    // insert based upon comparison
+    if (newNode.value < currentNode.value) {
+      _handleSmaller()
+    } else if (newNode.value > currentNode.value) {
+      _handleLarger()
+    }
+
   }
 
   _insertion()
@@ -91,7 +92,11 @@ var BSTOne = new BinarySearchTree(nodeOne)
 var newNode = new Node(11)
 var newNodeTwo = new Node(7)
 var newNodeThree = new Node(3)
+var newNodeFour = new Node(10)
 
 BSTOne.insert(newNode)
 BSTOne.insert(newNodeTwo)
 BSTOne.insert(newNodeThree)
+BSTOne.insert(newNodeFour)
+
+console.log(BSTOne)
