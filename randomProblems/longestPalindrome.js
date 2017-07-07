@@ -44,3 +44,18 @@ var inputTwo = 'abcccbAA'
 var answerTwo = longestPalindrome(inputTwo.split(''))
 console.log('input: ', inputTwo, ' : ', answerTwo)
 
+var inputThree = 'a'
+var answerThree = longestPalindrome(inputThree.split(''))
+console.log('input: ', inputThree, ' : ', answerThree)
+
+var inputFour = 'aa'
+var answerFour = longestPalindrome(inputFour.split(''))
+console.log('input: ', inputFour, ' : ', answerFour)
+
+var inputFive = 'aaa'
+var answerFive = longestPalindrome(inputFive.split(''))
+console.log('input: ', inputFive, ' : ', answerFive)
+
+var inputSix = 'abcde'
+var answerSix = longestPalindrome(inputSix.split(''))
+console.log('input: ', inputSix, ' : ', answerSix)
