@@ -59,7 +59,7 @@ BinarySearchTree.prototype.containsBst = function(target) {
     if (target > root.value && root.rc) {
       return _find(root.rc)
     }
-    if (targe < root.value && root.lc) {
+    if (target < root.value && root.lc) {
       return _find(root.lc)
     }
     return false
@@ -151,4 +151,10 @@ BSTOne.insert(newNodeTwo)
 BSTOne.insert(newNodeThree)
 BSTOne.insert(newNodeFour)
 
-console.log(BSTOne)
+// console.log(BSTOne)
+
+// test contains
+console.log(BSTOne.containsBst(8)) // true
+console.log(BSTOne.containsBst(12)) // false
+console.log(BSTOne.containsBst(11)) // true
+console.log(BSTOne.containsBst(3)) // true
