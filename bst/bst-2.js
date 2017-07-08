@@ -49,10 +49,30 @@ BinarySearchTree.prototype.insert = function(newNode) {
 
 }
  
-BinarySearchTree.prototype.contains = function() {
+// this is a BST method, that takes advantage of the data structure 
+BinarySearchTree.prototype.containsBst = function(target) {
+
+  function _find(root) {
+    if (target === root.value) {
+      return true
+    }
+    if (target > root.value && root.rc) {
+      return _find(root.rc)
+    }
+    if (targe < root.value && root.lc) {
+      return _find(root.lc)
+    }
+    return false
+  }
+
+  return _find(this.root)
+}
+
+BinarySearchTree.prototype.containsGeneral = function(target) {
 
 }
 
+// this is really a tree method, not just a BST method
 BinarySearchTree.prototype.preOrderTraversal = function(cb) {
   _traverse(this.root)
 
@@ -67,6 +87,7 @@ BinarySearchTree.prototype.preOrderTraversal = function(cb) {
   }
 }
 
+// this is really a tree method, not just a BST method
 BinarySearchTree.prototype.inOrderTraversal = function(cb) {
   _traverse(this.root)
 
@@ -81,6 +102,7 @@ BinarySearchTree.prototype.inOrderTraversal = function(cb) {
   }
 }
 
+// this is really a tree method, not just a BST method
 BinarySearchTree.prototype.postOrderTraversal = function(cb) {
   _traverse(this.root)
 
