@@ -68,8 +68,27 @@ BinarySearchTree.prototype.containsBst = function(target) {
   return _find(this.root)
 }
 
-BinarySearchTree.prototype.containsGeneral = function(target) {
+// this method finds a target, then does something to it, more general
+BinarySearchTree.prototype.findAndDo = function(target, cb) {
 
+  function _find(root) {
+    if (target === root.value) {
+      return cb(root)
+    }
+    if (target > root.value && root.rc) {
+      return _find(root.rc) 
+    }
+    if (target < root.value && root.lc) {
+      return _find(root.lc)
+    }
+    return 'this target is not in the tree'
+  }
+
+  return _find(this.root)
+}
+
+BinarySearchTree.prototype.contains = function(target) {
+  
 }
 
 // this is really a tree method, not just a BST method
@@ -154,7 +173,4 @@ BSTOne.insert(newNodeFour)
 // console.log(BSTOne)
 
 // test contains
-console.log(BSTOne.containsBst(8)) // true
-console.log(BSTOne.containsBst(12)) // false
-console.log(BSTOne.containsBst(11)) // true
-console.log(BSTOne.containsBst(3)) // true
+
