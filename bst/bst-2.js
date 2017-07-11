@@ -100,6 +100,7 @@ BinarySearchTree.prototype.containsUsingGeneral = function(target) {
   return this.findAndDo(target, logFinding)
 }
 
+
 // ************** TRAVERSALS ************** //
 
 // this is really a tree method, not just a BST method
@@ -149,6 +150,22 @@ BinarySearchTree.prototype.postOrderTraversal = function(cb) {
 
 BinarySearchTree.prototype.widthFirstTraversal = function() {
 
+  var treeNodes = [this.root]
+  var index = 0
+  
+  while (index < treeNodes.length) {
+    var currentNode = treeNodes[index]
+    
+    if (currentNode.lc) {
+      treeNodes.push(currentNode.lc)
+    }
+
+    if (currentNode.rc) {
+      treeNodes.push(currentNode.rc) 
+    }
+    index++
+  }
+
 }
 
 // testing
@@ -181,7 +198,10 @@ BSTOne.insert(newNodeTwo)
 BSTOne.insert(newNodeThree)
 BSTOne.insert(newNodeFour)
 
-console.log(BSTOne.containsBst(3)) // true
-console.log(BSTOne.containsBst(15)) // false
+// console.log(BSTOne.containsBst(3)) // true
+// console.log(BSTOne.containsBst(15)) // false
 
-console.log(BSTOne.containsUsingGeneral(3)) // true
+// console.log(BSTOne.containsUsingGeneral(3)) // true
+// console.log(BSTOne.containsUsingGeneral(15)) // this target is not in the tree
+
+BSTOne.widthFirstTraversal()
