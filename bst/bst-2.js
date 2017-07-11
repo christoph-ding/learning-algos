@@ -49,6 +49,8 @@ BinarySearchTree.prototype.insert = function(newNode) {
 
 }
  
+// ************** CONTAINS AND GENERAL FINDING ************** //
+
 // this is a BST method, that takes advantage of the data structure 
 BinarySearchTree.prototype.containsBst = function(target) {
 
@@ -72,7 +74,7 @@ BinarySearchTree.prototype.containsBst = function(target) {
 BinarySearchTree.prototype.findAndDo = function(target, cb) {
 
   function _find(root) {
-    if (target === root.value) {
+    if (target === root.value) {      
       return cb(root)
     }
     if (target > root.value && root.rc) {
@@ -84,12 +86,21 @@ BinarySearchTree.prototype.findAndDo = function(target, cb) {
     return 'this target is not in the tree'
   }
 
-  return _find(this.root)
+  var answer = _find(this.root) 
+  return answer
 }
 
-BinarySearchTree.prototype.contains = function(target) {
-  
+BinarySearchTree.prototype.containsUsingGeneral = function(target) {
+
+  var logFinding = function(node) {
+    var msg = 'found! ' + node.value
+    return msg  
+  }
+
+  return this.findAndDo(target, logFinding)
 }
+
+// ************** TRAVERSALS ************** //
 
 // this is really a tree method, not just a BST method
 BinarySearchTree.prototype.preOrderTraversal = function(cb) {
@@ -170,7 +181,7 @@ BSTOne.insert(newNodeTwo)
 BSTOne.insert(newNodeThree)
 BSTOne.insert(newNodeFour)
 
-// console.log(BSTOne)
+console.log(BSTOne.containsBst(3)) // true
+console.log(BSTOne.containsBst(15)) // false
 
-// test contains
-
+console.log(BSTOne.containsUsingGeneral(3)) // true
