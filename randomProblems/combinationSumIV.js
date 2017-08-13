@@ -6,14 +6,13 @@ function comboSum(nums, target) {
   var singleCombo = []
 
   function gatherCombos(innerTarget) {
-    console.log('combo: ', singleCombo, ' innerTarget: ', innerTarget)
     if (innerTarget === 0) {
-      console.log('done!')
-      answers.push(singleCombo)
+      // we have to remember to 'copy' singleCombo, 
+      // because arrays are called by reference
+      answers.push(singleCombo.slice())
     } else {      
       nums.forEach(function(num) {
         if (num <= innerTarget) {
-          console.log('making recursive call!')
           singleCombo.push(num)
           gatherCombos(innerTarget - num)
           singleCombo.pop()
@@ -28,3 +27,8 @@ function comboSum(nums, target) {
 
 var testCaseOne = {nums: [1, 2], target: 2}
 var answerOne = comboSum(testCaseOne.nums, testCaseOne.target)
+console.log(answerOne)
+
+var testCaseTwo = {nums: [1, 2, 3], target: 4}
+var answerTwo = comboSum(testCaseTwo.nums, testCaseTwo.target)
+console.log(answerTwo)
