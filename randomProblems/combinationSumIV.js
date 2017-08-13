@@ -1,18 +1,13 @@
 function comboSum(nums, target) {
-  var answer = []
+  var answers = []
 
-  function gatherCombos(subNums, newTarget) {
-    for (var i = 0; i < subNums.length; i++) {
-      var currentNum = subNums[i]
-      if (currentNum < newTarget) {
-        
-      } else if (currentNum === newTarget) {
+  function gatherCombos(newTarget) {
 
-      }
-    }
-  }
-  // call the inner function
-  gatherCombos(nums, target)
+
+
+
+
+  gatherCombos(target)
   return answers
 }
 
