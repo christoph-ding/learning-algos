@@ -1,4 +1,4 @@
-function binaryCalculator(a, b) {
+function binaryCalculatorOne(a, b) {
   var aVal = 0
   var aAsDigits = a.split('')
 
@@ -18,5 +18,26 @@ function convertToDecimal(digit, twosPlace) {
   return digitVal
 }
 
+// test for binaryCalculatorOne
 var testOne = ['11', '11']
-binaryCalculator(testOne[0], testOne[1])
+// binaryCalculatorOne(testOne[0], testOne[1])
+
+
+function binaryCalculatorTwo(a, b) {
+  var aAsDigits = a.split('').reverse()
+  var bAsDigits = b.split('').reverse()
+  var longestNumberLength = Math.max(aAsDigits.length, bAsDigits.length)
+
+  var sum = '' 
+
+  // iterate through each digit index, adding 
+
+  // testing
+  console.log(aAsDigits)
+  console.log(bAsDigits)
+  console.log(longestNumberLength)
+}
+
+// test for binaryCalculatorTwo
+var testOne = ['11', '1']
+binaryCalculatorTwo(testOne[0], testOne[1])
