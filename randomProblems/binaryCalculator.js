@@ -24,9 +24,32 @@ function convertToDecimal(digit, twosPlace) {
   return digitVal
 }
 
+function convertToBinary(number) {
+  var remainder = number
+  var answer = []
+
+  while (remainder > 0) {
+    var highestCanGetWithPowersOfTwo = Math.floor(Math.log2(remainder))
+    answer[highestCanGetWithPowersOfTwo] = '1'
+    remainder = remainder - Math.pow(2, highestCanGetWithPowersOfTwo)
+  }
+
+  answer.reverse()
+
+  for (var i = 0; i < answer.length; i++ ) {
+    if (answer[i] === undefined) {
+      answer[i] = '0'
+    }
+  }
+  console.log(answer.join(''))
+  return answer.join()
+}
+
 // test for binaryCalculatorOne
 var testOne = ['111', '11']
-binaryCalculatorOne(testOne[0], testOne[1])
+// binaryCalculatorOne(testOne[0], testOne[1])
+convertToBinary(10)
+
 
 
 function binaryCalculatorTwo(a, b) {
