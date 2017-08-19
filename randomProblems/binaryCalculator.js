@@ -1,9 +1,9 @@
 function binaryCalculatorOne(a, b) {
-  var aVal = 0
   var aAsDigits = a.split('')
-
-  var bVal = 0
   var bAsDigits = b.split('')
+
+  var aVal = 0
+  var bVal = 0
 
   aAsDigits.forEach(function(digit, indx) {
     var digitVal = convertToDecimal(digit, indx)
@@ -16,9 +16,11 @@ function binaryCalculatorOne(a, b) {
   })
  
   var sumAsDecimal = aVal + bVal
-  console.log(sumAsDecimal)
+  var sumAsBinary = convertToBinary(sumAsDecimal)
+  return sumAsBinary
 }
 
+// helper functions
 function convertToDecimal(digit, twosPlace) {
   var digitVal = Number(digit) * Math.pow(2, twosPlace)
   return digitVal
@@ -41,16 +43,12 @@ function convertToBinary(number) {
       answer[i] = '0'
     }
   }
-  console.log(answer.join(''))
-  return answer.join()
+  return String(answer.join(''))
 }
 
 // test for binaryCalculatorOne
 var testOne = ['111', '11']
-// binaryCalculatorOne(testOne[0], testOne[1])
-convertToBinary(10)
-
-
+console.log(binaryCalculatorOne(testOne[0], testOne[1]))
 
 function binaryCalculatorTwo(a, b) {
   var aAsDigits = a.split('').reverse()
