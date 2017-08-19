@@ -48,23 +48,39 @@ function convertToBinary(number) {
 
 // test for binaryCalculatorOne
 var testOne = ['111', '11']
-console.log(binaryCalculatorOne(testOne[0], testOne[1]))
+// console.log(binaryCalculatorOne(testOne[0], testOne[1]))
 
 function binaryCalculatorTwo(a, b) {
   var aAsDigits = a.split('').reverse()
   var bAsDigits = b.split('').reverse()
   var longestNumberLength = Math.max(aAsDigits.length, bAsDigits.length)
 
-  var sum = '' 
+  var sum = ''
+  var carryOne = false
 
   // iterate through each digit index, adding 
+  for (var i = 0; i < longestNumberLength; i++) {
+    var aBinary = Number(aAsDigits[i] || 0)
+    var bBinary = Number(bAsDigits[i] || 0)
+    var sumBinary = aBinary + bBinary + carryOne
 
-  // testing
-  console.log(aAsDigits)
-  console.log(bAsDigits)
-  console.log(longestNumberLength)
+    if (sumBinary > 1) {
+      sumBinary = 0
+      carryOne = true
+    } else {
+      carryOne = false
+    }
+    sum = sum + sumBinary
+  }
+
+  if (carryOne) {
+    sum = '1' + sum
+  }
+
+  return sum
+  
 }
 
 // test for binaryCalculatorTwo
-// var testOne = ['11', '1']
-// binaryCalculatorTwo(testOne[0], testOne[1])
+var testOne = ['11', '1']
+binaryCalculatorTwo(testOne[0], testOne[1])
