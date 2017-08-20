@@ -1,6 +1,13 @@
 function topKFrequentElements(elemList, k) {
   var output = []
 
+  // step 1, O(n): get a DS with the frequency of each unique elem
+
+
+  // step 2, O(n): place each elem:frequency pair into a helper list that naturally sorts
+
+
+  // step 3, O(n): use 'sorted', helper list to build output
 
 
   return output
