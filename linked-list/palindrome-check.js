@@ -1,6 +1,6 @@
 function linkedList(head, tail) {
-  this.head = head
-  this.tail = tail
+  this.head = head || null
+  this.tail = tail || null
 }
 
 function linkedListNode(val, next) {
@@ -9,13 +9,28 @@ function linkedListNode(val, next) {
 }
 
 function generateLLNodes(input) {
-  input.forEach(function(val, indx) {
+  var generatedLL = new linkedList()
+  var previousNode = null
+
+  input.forEach(function(val, indx) {    
     var newNode = new linkedListNode(val)
 
+    if (indx === 0) {
+      generatedLL.head = newNode
+    }
 
-    if (indx < )
-    console.log(val, '    ', indx)
+    if (indx > 0) {
+      previousNode.next = newNode
+    }
+
+    if (indx === input.length - 1) {
+      generatedLL.tail = newNode
+    }
+
+    previousNode = newNode
   })
+
+  return generatedLL
 }
 
 function checkPalindrome(linkedList) {
