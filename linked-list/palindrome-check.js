@@ -35,16 +35,15 @@ function generateLLNodes(input) {
 
 function checkPalindrome(linkedList) {
   var currentNode = linkedList.head
+  var linkedListValues = []
 
-  while (currentNode.next) {
-    console.log(currentNode.val)
+  while (currentNode) {
+    linkedListValues.push(currentNode.val)
     currentNode = currentNode.next
   }
 
-  console.log(currentNode.val)
+  return linkedListValues.slice() === linkedListValues.reverse()
 }
-
-
 
 // tests
 var nodeOne = new linkedListNode(1, null)
@@ -53,4 +52,6 @@ var nodeThree = new linkedListNode(2, nodeTwo)
 
 var nodeList = [1,2,3,4,5,6,7,8,9]
 var LLOne = generateLLNodes(nodeList)
-checkPalindrome(LLOne)
+console.log(checkPalindrome(LLOne))
+
+
