@@ -34,7 +34,14 @@ function generateLLNodes(input) {
 }
 
 function checkPalindrome(linkedList) {
+  var currentNode = linkedList.head
 
+  while (currentNode.next) {
+    console.log(currentNode.val)
+    currentNode = currentNode.next
+  }
+
+  console.log(currentNode.val)
 }
 
 
@@ -45,5 +52,5 @@ var nodeTwo = new linkedListNode(2, nodeOne)
 var nodeThree = new linkedListNode(2, nodeTwo)
 
 var nodeList = [1,2,3,4,5,6,7,8,9]
-generateLLNodes(nodeList)
-
+var LLOne = generateLLNodes(nodeList)
+checkPalindrome(LLOne)
