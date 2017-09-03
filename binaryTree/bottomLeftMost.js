@@ -27,8 +27,32 @@ function bottomLeftMost(node, depth) {
 }
 
 // nodes
-function node(val) {
-  this.val = val;
+function Node(val, lc, rc) {
+  this.val = val
+  this.lc = lc || null
+  this.rc = rc || null
+}
+
+function makeABunchOfNodes(input) {
+  var nodes = []
+
+  input.forEach(function(key) {
+    var nodeInstance = new Node(key)
+    nodes.push(nodeInstance)
+  })
+
+  return nodes
 }
 
 // tests
+var setOneNodes = makeABunchOfNodes([1,2,3,4,5])
+
+// make tree one
+var treeOneRoot = setOneNodes[2]
+
+setOneNodes[1].lc = setOneNodes[0]
+treeOneRoot.lc = setOneNodes[1]
+setOneNodes[3].rc = setOneNodes[4]
+treeOneRoot.rc = setOneNodes[3]
+
+console.log(treeOneRoot)
