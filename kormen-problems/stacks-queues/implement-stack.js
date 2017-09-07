@@ -28,7 +28,7 @@ StackWithArray.prototype.pop = function() {
   }
 }
 
-// tests
+// tests for array
 var stack = new StackWithArray()
 console.log('empty: ', stack.isEmpty())
 stack.push(1)
@@ -53,4 +53,20 @@ function StackWithLL() {
   this.LL = new LinkedList()
 }
 
+StackWithLL.prototype.isEmpty = function() {
 
+}
+
+StackWithLL.prototype.peek = function() {
+
+}
+
+StackWithLL.prototype.push = function(val) {
+
+}
+
+StackWithLL.prototype.pop = function() {
+
+}
+
+// tests for Linked List
