@@ -1,24 +1,24 @@
-function stackWithArray() {
+function StackWithArray() {
   this.nextToBeFilled = 0
   this.stack = []
 }
 
-stackWithArray.prototype.push = function(val) {
+StackWithArray.prototype.push = function(val) {
   this.stack[this.nextToBeFilled] = val
   this.nextToBeFilled = this.nextToBeFilled + 1
 }
 
-stackWithArray.prototype.isEmpty = function() {
+StackWithArray.prototype.isEmpty = function() {
   return this.nextToBeFilled === 0
 }
 
-stackWithArray.prototype.peek = function() {
+StackWithArray.prototype.peek = function() {
   var indexOfHighestPlate = this.nextToBeFilled - 1
   var topOfStack = this.stack[indexOfHighestPlate]
   return topOfStack
 }
 
-stackWithArray.prototype.pop = function() {
+StackWithArray.prototype.pop = function() {
   if (this.isEmpty()) {
     return "underflow"
   } else {
@@ -29,10 +29,28 @@ stackWithArray.prototype.pop = function() {
 }
 
 // tests
-var stack = new stackWithArray()
+var stack = new StackWithArray()
 console.log('empty: ', stack.isEmpty())
 stack.push(1)
 stack.push(2)
 console.log('peeking: ', stack.peek())
 console.log('empty: ', stack.isEmpty())
 console.log(stack)
+
+// implementing with a linkedList
+function LinkedList(head, tail) {
+  this.head = head || null
+  this.tail = tail || null
+}
+
+function LLNode(val, next) {
+  this.val = val
+  this.next = next || null
+}
+
+function StackWithLL() {
+
+  this.LL = new LinkedList()
+}
+
+
