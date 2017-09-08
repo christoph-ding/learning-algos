@@ -1,30 +1,32 @@
 function StackWithArray() {
-  this.nextToBeFilled = 0
+  this.top = 0
   this.stack = []
 }
 
-StackWithArray.prototype.push = function(val) {
-  this.stack[this.nextToBeFilled] = val
-  this.nextToBeFilled = this.nextToBeFilled + 1
-}
-
 StackWithArray.prototype.isEmpty = function() {
-  return this.nextToBeFilled === 0
+  return this.top === 0
 }
 
 StackWithArray.prototype.peek = function() {
-  var indexOfHighestPlate = this.nextToBeFilled - 1
-  var topOfStack = this.stack[indexOfHighestPlate]
-  return topOfStack
+  if (this.isEmpty()) {
+    return 'underflow' 
+  } else {
+    return this.stack[this.top - 1]
+  }
+}
+
+StackWithArray.prototype.push = function(val) {
+  this.stack[this.top] = val
+  this.top = this.top + 1
 }
 
 StackWithArray.prototype.pop = function() {
   if (this.isEmpty()) {
     return "underflow"
   } else {
-    var plateToPop = this.peek()
-    this.nextToBeFilled = this.nextToBeFilled - 1
-    return plateToPop
+    var topItem = this.peek()
+    this.top = this.top - 1
+    return topItem
   }
 }
 
