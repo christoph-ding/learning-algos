@@ -3,7 +3,7 @@ function QueueWithArray() {
   this.front = 0
   this.back = 0
   // we initialize the array to an arbitrary number
-  var arrayInitialSize = 10
+  var arrayInitialSize = 5
   this.array = Array(arrayInitialSize)
 }
 
@@ -11,21 +11,53 @@ QueueWithArray.prototype.isEmpty = function() {
   return this.front === this.back
 }
 
-QueueWithArray.prototype.enqueue = function(val) {
+QueueWithArray.prototype.wouldOverflow = function() {
+  if (this.back === this.array.length - 1 && this.front === 0) {
+    return true
+  } else if ( this.back === this.front - 1) {
+    return true
+  }
+  return false
+}
 
+QueueWithArray.prototype.enqueue = function(val) {
+  // will it overflow?
+  if (this.wouldOverflow()) {
+    return 'overflows'
+  } else {
+    this.array[this.back] = val
+    // then increment, 'circling' if we need to
+    if (this.back === this.array.length - 1) {
+      this.back = 0
+    } else {
+      this.back = this.back + 1   
+    }
+  }
 }
 
 QueueWithArray.prototype.dequeue = function() {
-
+  if (this.isEmpty()) {
+    return 'underflow'
+  } else {
+    var valueToReturn = this.array[this.front]
+    // then move the front of the line 'up', 'circling' if we need to
+    if (this.head = this.array.length - 1) {
+      this.head = 0
+    } else {
+      this.head = this.head + 1
+    }
+    return valueToReturn
+  }
 }
 
 // tests
 var queueOne = new QueueWithArray()
 console.log('empty: ', queueOne.isEmpty())
-
-
-
-
+console.log('dequeue: ', queueOne.dequeue())
+queueOne.enqueue(1)
+console.log(queueOne)
+console.log(queueOne.dequeue())
+console.log(queueOne)
 
 
 
