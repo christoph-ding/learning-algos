@@ -2,7 +2,6 @@ function parensBalanceChecker(inputString) {
   var helperStack = []
   var balancedSoFar = true
 
-
   inputString.split('').some(function(character) {
     if (character === '(') {
       helperStack.push(character)
@@ -29,10 +28,13 @@ function parensBalanceChecker(inputString) {
 // test
 var testOne = 'abc' 
 console.log(parensBalanceChecker(testOne)) // true
-var testOne = '(abc)'
-console.log(parensBalanceChecker(testOne)) // true
-var testOne = '(abc))'
-console.log(parensBalanceChecker(testOne)) // false
-var testOne = '('
-console.log(parensBalanceChecker(testOne)) // false
-
+var testTwo = '(abc)'
+console.log(parensBalanceChecker(testTwo)) // true
+var testThree = '(abc))'
+console.log(parensBalanceChecker(testThree)) // false
+var testFour = '('
+console.log(parensBalanceChecker(testFour)) // false
+var testFive = '(()('
+console.log(parensBalanceChecker(testFive)) // false
+var testSix = ''
+console.log(parensBalanceChecker(testSix)) // true
