@@ -1,37 +1,35 @@
 // with overflow and no sizing ...
-function QueueWithArray() {
-  this.front = 0
-  this.back = 0
+function QueueWithArray(initialSize) {
+  this.front = 1
+  this.back = 1
+  this.size = 0
+
   // we initialize the array to an arbitrary number
-  var arrayInitialSize = 5
-  this.array = Array(arrayInitialSize)
+  this.arrayInitialSize = initialSize || 1
+  this.array = Array(this.arrayInitialSize + 1)
 }
 
 QueueWithArray.prototype.isEmpty = function() {
-  return this.front === this.back
+  return this.size === 0
 }
 
-QueueWithArray.prototype.wouldOverflow = function() {
-  if (this.back === this.array.length - 1 && this.front === 0) {
-    return true
-  } else if ( this.back === this.front - 1) {
-    return true
-  }
-  return false
+QueueWithArray.prototype.isFull = function() {
+  return this.size === this.arrayInitialSize
 }
 
 QueueWithArray.prototype.enqueue = function(val) {
   // will it overflow?
-  if (this.wouldOverflow()) {
+  if (this.isFull()) {
     return 'overflows'
   } else {
     this.array[this.back] = val
     // then increment, 'circling' if we need to
-    if (this.back === this.array.length - 1) {
-      this.back = 0
+    if (this.back === this.arrayInitialSize + 1) {
+      this.back = 1
     } else {
-      this.back = this.back + 1   
+      this.back = this.back + 1
     }
+    this.size = this.size + 1
   }
 }
 
@@ -39,24 +37,29 @@ QueueWithArray.prototype.dequeue = function() {
   if (this.isEmpty()) {
     return 'underflow'
   } else {
-    var valueToReturn = this.array[this.front]
-    // then move the front of the line 'up', 'circling' if we need to
-    if (this.head = this.array.length - 1) {
-      this.head = 0
+    var dequeued = this.array[this.front]
+    this.array[this.front] = undefined
+    // then increment, 'circling' if we need to
+    if (this.front === this.arrayInitialSize + 1) {
+      this.front = 1
     } else {
-      this.head = this.head + 1
+      this.front = this.front + 1
     }
-    return valueToReturn
+    this.size = this.size - 1
+    return dequeued
   }
 }
 
 // tests
-var queueOne = new QueueWithArray()
-console.log('empty: ', queueOne.isEmpty())
-console.log('dequeue: ', queueOne.dequeue())
+var queueOne = new QueueWithArray(5)
+console.log(queueOne.dequeue()) // underflow
 queueOne.enqueue(1)
-console.log(queueOne)
-console.log(queueOne.dequeue())
+queueOne.enqueue(2)
+queueOne.enqueue(3)
+console.log(queueOne.dequeue()) // 1
+console.log(queueOne.dequeue()) // 2
+console.log(queueOne.dequeue()) // 3
+console.log(queueOne.dequeue()) // underflow
 console.log(queueOne)
 
 
