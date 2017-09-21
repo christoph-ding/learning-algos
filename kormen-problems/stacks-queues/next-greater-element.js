@@ -4,6 +4,17 @@ function nextGreaterElement (inputList) {
   var output = new Array(inputList.length)
 
   inputList.forEach(function(currentElem, indx) {
+
+    while (helperStack.length > 0) {
+      var topPlate = helperStack[helperStack.length - 1]
+      if (currentElem > topPlate.val) {
+        helperStack[topPlate.indx] = currentElem
+        helperStack.pop()
+      } else {
+        break
+      }
+    }
+
     var nextElem = inputList[indx + 1]
     if (nextElem > currentElem) {
       output[indx] = nextElem
@@ -18,11 +29,10 @@ function nextGreaterElement (inputList) {
       output[i] = -1
     }
   }
-
-  console.log(helperStack)
+  
   return output
 }
 
 // tests
-var listOne = [1,2,3,2]
+var listOne = [121,3,6,5,11, 21]
 console.log(nextGreaterElement(listOne))
