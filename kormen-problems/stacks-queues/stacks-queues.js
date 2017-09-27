@@ -1,47 +1,53 @@
+// a Queue
+function Queue() {
+  this.q = []
+}
+
+Queue.prototype.push = function(val) {
+  this.q.push(val)
+}
+
 // efficient pop
-function stackEfficientPop() {
+function StackEfficientPop() {
 
 }
 
-stackEfficientPop.prototype.isEmpty() {
+StackEfficientPop.prototype.isEmpty = function () {
 
 }
 
-stackEfficientPop.prototype.peek() {
+StackEfficientPop.prototype.peek = function () {
   
 }
 
-stackEfficientPop.prototype.push(val) {
+StackEfficientPop.prototype.push = function (val) {
   
 }
 
-stackEfficientPop.prototype.pop() {
+StackEfficientPop.prototype.pop = function () {
   
 }
 
 // tests
 
-
-
-
 // efficient push
 function stackEfficientPush() {
+  this.mainQ = new Queue()
+}
+
+stackEfficientPush.prototype.isEmpty = function () {
 
 }
 
-stackEfficientPush.prototype.isEmpty() {
-
-}
-
-stackEfficientPush.prototype.peek() {
+stackEfficientPush.prototype.peek = function () {
   
 }
 
-stackEfficientPush.prototype.push(val) {
+stackEfficientPush.prototype.push = function (val) {
   
 }
 
-stackEfficientPush.prototype.pop() {
+stackEfficientPush.prototype.pop = function () {
   
 }
 
