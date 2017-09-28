@@ -53,7 +53,15 @@ StackEfficientPop.prototype.push = function (val) {
 }
 
 StackEfficientPop.prototype.pop = function () {
-  
+  if (this.top.isEmpty()) {
+    return 'underflow'
+  } else {
+    let plateToReturn = this.top.dequeue()
+    if (!(this.restQ.isEmpty())) {
+      this.top.enqueue(this.restQ.dequeue())
+    }
+    return plateToReturn
+  }
 }
 
 // tests
@@ -67,8 +75,9 @@ console.log(stackOne.peek()) // 1
 
 stackOne.push(2)
 stackOne.push(3)
-console.log(stackOne.isEmpty()) // false
 console.log(stackOne.peek()) // 3
+console.log(stackOne.pop()) // 3
+console.log(stackOne.peek()) // 2
 console.log(stackOne)
 
 
