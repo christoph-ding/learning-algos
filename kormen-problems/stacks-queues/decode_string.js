@@ -1,11 +1,19 @@
+// without recursion
 function decode_stringWithoutRecursion (inputString) {
   let output = ''
 
-  // iterate through the input 
-    // when you encounter an open [ 
-    // get "the thing inside" UNTIL the close bracket
-    // * n "the thing inside" and add to output
+  // we are imitating stacks using an array
+  let characterStack = []
+  let currentSubString = ''
 
+  inputString.split('').forEach(function(char) {
+    if (char === ']') {
+      console.log('rewind')
+      // 'rewind'
+    } else {
+      characterStack.push(char)
+    }
+  })
 
 
   return output
@@ -13,8 +21,10 @@ function decode_stringWithoutRecursion (inputString) {
 
 // tests
 let inputStringOne = "3[a]2[bc]"
-console.log(decode_string(inputStringOne)) // "aaabcbc"
+console.log(decode_stringWithoutRecursion(inputStringOne)) // "aaabcbc"
 
+
+// with recursion
 function decode_stringUsingRecursion (inputString) {
-  
+
 }
