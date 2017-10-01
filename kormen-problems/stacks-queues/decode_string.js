@@ -39,12 +39,13 @@ function decode_stringWithoutRecursion (inputString) {
           moveToOutput()
           break
         }
+      } else if (currentCharacter === undefined) {
+        break
       }
     }
   }
 
   function multiplyString(multiplier) {
-
     let counter = 1
     let newSubString = []
 
@@ -69,8 +70,8 @@ function decode_stringWithoutRecursion (inputString) {
 let inputStringOne = "3[a]2[bc]"
 // console.log(decode_stringWithoutRecursion(inputStringOne)) // "aaabcbc"
 
-let inputStringTwo = "3[a2[c]]2[bc]"
-console.log(decode_stringWithoutRecursion(inputStringTwo)) // "aaabcbc"
+let inputStringTwo = "3[a2[c2[d]]]"
+console.log(decode_stringWithoutRecursion(inputStringTwo)) // acddcddacddcddacddcdd
 
 // with recursion
 function decode_stringUsingRecursion (inputString) {
