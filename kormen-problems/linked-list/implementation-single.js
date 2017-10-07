@@ -3,17 +3,14 @@ function singleLinkedNode(key) {
   this.next = null
 }
 
-singleLinkedNode.prototype.delete = function() {
-
-}
-
 singleLinkedNode.prototype.insertAfterTail = function(node) {
-
+  this.next = node
 }
 
 // no circular
-function singleLinkedList() {
-
+function singleLinkedList(head) {
+  this.head = head || null
+  this.tail = head || null
 }
 
 singleLinkedList.prototype.isEmpty = function() {
@@ -41,5 +38,10 @@ singleLinkedList.prototype.insertBeforeHead = function(key) {
 }
 
 // tests
-var nodeOne = new singleLinkedList(1)
+var nodeOne = new singleLinkedNode(1)
+var nodeTwo = new singleLinkedNode(2)
+var nodeThree = new singleLinkedNode(3)
+nodeOne.insertAfterTail(nodeTwo)
+nodeTwo.insertAfterTail(nodeThree)
 console.log(nodeOne)
+
