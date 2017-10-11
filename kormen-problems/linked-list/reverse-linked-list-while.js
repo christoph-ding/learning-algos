@@ -19,7 +19,28 @@ function logAllLLNode(head) {
 
 // reversed linked list 
 function linkedListReverse(head) {
+  let previous = null
+  let current = head
+  let origNext = current.next
 
+  while (current !== null) {
+    current.next = previous
+    previous = current
+    current = origNext
+    if (current !== null) {
+      origNext = current.next
+    }
+  }
 }
 
 // tests
+let nodeOne = new linkedListNode(1) 
+let nodeTwo = new linkedListNode(2)
+let nodeThree = new linkedListNode(3)
+let nodeFour = new linkedListNode(4)
+nodeThree.next = nodeFour
+nodeTwo.next = nodeThree
+nodeOne.next = nodeTwo
+
+linkedListReverse(nodeOne)
+console.log(logAllLLNode(nodeFour))
