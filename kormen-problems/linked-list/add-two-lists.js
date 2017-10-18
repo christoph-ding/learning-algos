@@ -18,8 +18,42 @@ function logAllLLNode(head) {
 }
 
 // 
-function addTwoList(listOne, listTwo) {
+function addTwoList(listOneHead, listTwoHead) {
+  let output = null
+  let nodeListOne = listOneHead
+  let nodeListTwo = listTwoHead 
+  let carryOne = false 
 
+  while (nodeListOne !== null || nodeListTwo !== null) {
+
+    let valueListOne = nodeListOne.key || 0
+    let valueListTwo = nodeListTwo.key || 0
+
+    let sum = valueListOne + valueListTwo
+
+    if (carryOne) {
+      sum = sum + 1
+      carryOne = false
+    }
+
+    if (sum > 9) {
+      sum = sum % 10
+      carryOne = true
+    }
+
+    let newDigit = new linkedListNode(sum)    
+
+
+    if (nodeListOne !== null) {
+      nodeListOne = nodeListOne.next  
+    }
+
+    if (nodeListTwo !== null) {
+      nodeListTwo = nodeListTwo.next
+    }    
+  }
+
+  return output
 }
 
 // tests
