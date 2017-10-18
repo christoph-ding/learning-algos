@@ -6,7 +6,6 @@ function linkedListNode (key) {
 
 function logAllLLNode(head) {
   let currentNode = head
-
   let output = []
 
   while (currentNode !== null) {
@@ -19,12 +18,37 @@ function logAllLLNode(head) {
 
 // 
 function reverseLinkedList(head) {
+  let newHead = null
 
+  let previous = null
+  let currentNode = head
+  let originalNext = currentNode.next
+
+  while (currentNode !== null) {
+    if (previous !== null) {
+      console.log('previous: ', previous.key, ' currentNode: ', currentNode.key, ' originalNext: ', originalNext.key)
+    }
+
+    // when we get to the 'end' we have to remember that this is the node to return
+    if (currentNode.next === null) {
+      newHead = currentNode
+    } 
+    originalNext = currentNode.next
+    currentNode.next = previous
+    previous = currentNode
+    currentNode = originalNext
+  }
+
+
+  return newHead
 }
 
 function addTwoList(listOneHead, listTwoHead) {
   let outputHead = null
   let currentNode = null
+
+  // reverse both lists in place ...
+
   let nodeListOne = listOneHead
   let nodeListTwo = listTwoHead 
   let carryOne = false 
@@ -47,6 +71,7 @@ function addTwoList(listOneHead, listTwoHead) {
     }
 
     let newDigit = new linkedListNode(sum)
+
     if (outputHead === null) {
       outputHead = newDigit
       currentNode = newDigit
@@ -92,9 +117,13 @@ nodeThreeB.next = nodeFourB
 nodeTwoB.next = nodeThreeB
 nodeOneB.next = nodeTwoB
 
-console.log('adding ... ')
-console.log(logAllLLNode(nodeOne))
-console.log(logAllLLNode(nodeOneB))
+// test reverse
+console.log(logAllLLNode((reverseLinkedList(nodeOne)))) // 4 -> 3 -> 2 -> 1
+// console.log(reverseLinkedList(nodeFour)) // 4
 
-console.log(logAllLLNode(addTwoList(nodeOne, nodeOneB)))
-//  6 -> 9 -> 1 -> 2
+// console.log('adding ... ')
+// console.log(logAllLLNode(nodeOne))
+// console.log(logAllLLNode(nodeOneB))
+
+// console.log(logAllLLNode(addTwoList(nodeOne, nodeOneB)))  //  6 -> 9 -> 1 -> 2
+
