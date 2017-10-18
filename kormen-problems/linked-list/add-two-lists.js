@@ -18,8 +18,13 @@ function logAllLLNode(head) {
 }
 
 // 
+function reverseLinkedList(head) {
+
+}
+
 function addTwoList(listOneHead, listTwoHead) {
-  let output = null
+  let outputHead = null
+  let currentNode = null
   let nodeListOne = listOneHead
   let nodeListTwo = listTwoHead 
   let carryOne = false 
@@ -41,9 +46,19 @@ function addTwoList(listOneHead, listTwoHead) {
       carryOne = true
     }
 
-    let newDigit = new linkedListNode(sum)    
+    let newDigit = new linkedListNode(sum)
+    if (outputHead === null) {
+      outputHead = newDigit
+      currentNode = newDigit
+    } else {
+      currentNode.next = newDigit
+      currentNode = newDigit
+    }
 
 
+    // console.log('valueListOne: ', valueListOne, ' valueListTwo: ', valueListTwo, ' sum: ', sum, ' carryOne: ', carryOne)
+
+    // add the 'rest' of whichever linked list still has 'digits' left
     if (nodeListOne !== null) {
       nodeListOne = nodeListOne.next  
     }
@@ -53,7 +68,11 @@ function addTwoList(listOneHead, listTwoHead) {
     }    
   }
 
-  return output
+  if (carryOne) {
+    currentNode.next = new linkedListNode(1)
+  }
+
+  return outputHead
 }
 
 // tests
@@ -73,5 +92,9 @@ nodeThreeB.next = nodeFourB
 nodeTwoB.next = nodeThreeB
 nodeOneB.next = nodeTwoB
 
+console.log('adding ... ')
 console.log(logAllLLNode(nodeOne))
 console.log(logAllLLNode(nodeOneB))
+
+console.log(logAllLLNode(addTwoList(nodeOne, nodeOneB)))
+//  6 -> 9 -> 1 -> 2
