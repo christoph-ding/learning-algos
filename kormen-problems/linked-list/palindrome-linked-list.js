@@ -19,7 +19,34 @@ function logAllLLNode(head) {
 // 
 function palindromeChecker(head) {
 
+  // runners declared here?
+
+  // find length 
+
+  // use length to have access to 'midpoint node'
+    // is it even length?
+    // if it is odd length -> the 'middle is a gimme'
+    // ---> we have some 'mindpoint node'
+
+  // reverse all after the midpoint node... 
+    // so ... LL2 is the LL with head as mindpoint node
+    
+  // have 1 runner at the head of 'LL1'
+  // have 1 runner at the 'head' of 'LL2'
+
+  // iterate over 'both' LL1 and LL2 using runners
+    // we don't actually care about 'stopping' at null, just that:
+    // ? runner 1 == runner 2:
+      // y: w.e
+      // n: (break) -> false
+
+
+  // to have 'made it past the loop' -> true
+
 }
+
+// helper functions
+
 
 
 // tests
