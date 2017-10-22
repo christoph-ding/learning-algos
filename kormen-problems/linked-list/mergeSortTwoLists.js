@@ -19,6 +19,13 @@ function logAllLLNode(head) {
 // 
 
 function mergeTwoLists(headOne, headTwo) {
+  // instantiate variables / runners
+
+  // find the first node
+
+  // until both runners are exhausted ...
+    // compare both runners
+    // set next of sortedTail to smaller runner, increment that runner
 
 }
 
