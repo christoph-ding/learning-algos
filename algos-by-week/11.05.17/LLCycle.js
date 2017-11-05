@@ -48,5 +48,5 @@ console.log(LLHasCycle(null))
 console.log(LLHasCycle(nodeFour))
 console.log(LLHasCycle(nodeOne))
 
-nodeThree.next = null
+nodeThree.next = nodeOne
 console.log(LLHasCycle(nodeOne))
