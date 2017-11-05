@@ -8,19 +8,44 @@ function LLPalindrome(head) {
   let firstRunner = head
   let secondRunner = findCenter(head)
 
-  console.log('firstRunner: ', firstRunner.key, '   secondRunner: ', secondRunner.key)
-
   // reverse the 2nd half of the list, in place 
+  reverseList(secondRunner)
 
   // iterate 'both lists' using 2 runners
-  // one at start of entire list, one at start of 2nd half of the list
-  // if at anypoint, the 2 are not the same, list is NOT a palindrome
-
-  // otherwise, at the end, it is a palindrome
-
+  return allMatch(firstRunner, secondRunner)
 }
 
 // helper function
+function allMatch(one, two) {
+
+  while (one !== null && two !== null) {
+    if (one.key !== two.key) {
+      return false
+    } 
+    one = one.next
+    two = two.next
+  }
+
+  return true
+}
+
+
+function reverseList(head) {
+  let previous = null
+  let currentNode = head
+  let originalNext = currentNode.next
+
+  while (currentNode !== null) {
+    currentNode.next = previous
+    previous = currentNode
+    currentNode = originalNext
+
+    if (currentNode !== null) {
+      originalNext = currentNode.next    
+    }
+  }
+}
+
 function findCenter(head) {
   if (head === null || head.next === null) {
     return head   
@@ -66,8 +91,14 @@ nodeThree.next = nodeFour
 nodeTwo.next = nodeThree
 nodeOne.next = nodeTwo
 
-console.log(logAllLLNode(nodeOne))
-console.log(LLPalindrome(nodeOne)) // 1 -> 2 -> 3 -> 4 ... 1, 3
-console.log(LLPalindrome(nodeTwo)) // 2 -> 3 -> 4      ... 2, 4
-console.log(LLPalindrome(nodeThree)) // 3 -> 4      ... 3, 4 
+nodeOne = new linkedListNode('a')
+nodeTwo = new linkedListNode('b')
+nodeThree = new linkedListNode('a')
 
+console.log(LLPalindrome(nodeOne)) // true 
+
+nodeOne.next = nodeTwo
+console.log(LLPalindrome(nodeOne)) // false
+
+nodeTwo.next = nodeThree
+console.log(LLPalindrome(nodeOne)) // true
