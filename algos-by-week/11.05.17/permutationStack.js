@@ -2,25 +2,20 @@ function permutationWithoutStack(input) {
   let permutations = []
   let currentPermutation = []
 
-  function recurse(skipIndx) {
-
-    skipIndx == skipIndx || -1
-
-    if (currentPermutation.length === input.length) {
-      let currentPermutationAsString = currentPermutation.join('')
-      return permutations.push(currentPermutationAsString)
+  function recurse(characters) {
+    if (!(characters)) {
+      let word = currentPermutation.join('')
+      console.log(word)
+      permutations.push(word)
+      currentPermutation = []
+      return 
     } else {
-
-      for (let i = 0; i < input.length)
-
-
-
-      input.forEach(function(char, indx) {
-          if (skipIndx !== null && indx !== skipIndx) {
-            currentPermutation.push(char)
-            recurse(input, indx)
-            currentPermutation.pop()            
-          }
+      characters.forEach(function(char, indx) {
+        currentPermutation.push(char)
+        let leftPart = test.slice(0, indx)
+        let rightPart = test.slice(indx + 1)
+        let subList = leftPart.concat(rightPart)
+        recurse(subList)
       })
     }
   }
