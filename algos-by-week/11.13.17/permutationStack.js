@@ -1,4 +1,4 @@
-function permutationWithoutStack(input) {
+function permutationWithStack(input) {
   let permutations = []
   let currentCharacters = []
 
@@ -11,7 +11,12 @@ function permutationWithoutStack(input) {
       characters.forEach(function(char, indx) {
         currentCharacters.push(char)
         // find the 'sublist'
-        let leftPart = test.slice(0, indx)
+        let leftPart = characters.slice(0, indx)
+        let rightPart = characters.slice(indx + 1)
+        rightPart.forEach(function(elem) {
+          leftPart.push(elem)
+        })
+        recurse(leftPart)
         currentCharacters.pop()
       })
     }
@@ -23,7 +28,7 @@ function permutationWithoutStack(input) {
 
 // tests
 let inputOne = ['a', 'b', 'c']
-console.log(permutationWithoutStack(inputOne))
+console.log(permutationWithStack(inputOne))
 
 // let test = [1, 2, 3, 4, 5, 6, 7]
 // let indx = 1
@@ -31,4 +36,8 @@ console.log(permutationWithoutStack(inputOne))
 // console.log('left:' , leftPart)
 // let rightPart = test.slice(indx + 1)
 // console.log('right:' , rightPart)
-// let list
+
+// rightPart.forEach(function(elem) {
+//   leftPart.push(elem)
+// })
+// console.log('final: ', leftPart)
