@@ -21,18 +21,27 @@ let nodeOne = new linkedListNode(1)
 let nodeTwo = new linkedListNode(2)
 let nodeThree = new linkedListNode(3)
 let nodeFour = new linkedListNode(4)
-nodeThree.next = nodeFour
+nodeOne.next = nodeTwo
 nodeTwo.next = nodeThree
+nodeThree.next = nodeFour
 
 console.log(logAllLLNode(nodeOne))
 
 function reverseLLrecurse(LLhead) {
   // reverse the next list
-
   // set the return of the next list.next to this LLhead
 
+  if (LLhead.next) {
+    let tailOfReversedListNext = reverseLLrecurse(LLhead.next)
+    tailOfReversedListNext.next = LLhead
+  }
+
   // return the input head (now no longer the head of this list)
+  return LLhead
 } 
 
 reverseLLrecurse(nodeOne)
-console.log(logAllLLNode(nodeFour))
+console.log(nodeOne)
+console.log(nodeTwo)
+console.log(nodeThree)
+console.log(nodeFour)
