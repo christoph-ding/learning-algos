@@ -28,11 +28,9 @@ nodeThree.next = nodeFour
 console.log(logAllLLNode(nodeOne))
 
 function reverseLLrecurse(LLhead) {
-  // reverse the next list
-  // set the return of the next list.next to this LLhead
-
   if (LLhead.next) {
     let tailOfReversedListNext = reverseLLrecurse(LLhead.next)
+    LLhead.next = tailOfReversedListNext.next
     tailOfReversedListNext.next = LLhead
   }
 
@@ -41,7 +39,4 @@ function reverseLLrecurse(LLhead) {
 } 
 
 reverseLLrecurse(nodeOne)
-console.log(nodeOne)
-console.log(nodeTwo)
-console.log(nodeThree)
-console.log(nodeFour)
+console.log((logAllLLNode(nodeFour)))
