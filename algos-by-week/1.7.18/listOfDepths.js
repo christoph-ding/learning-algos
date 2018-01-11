@@ -9,29 +9,8 @@ function linkedListNode(val, next) {
   this.next = next || null
 }
 
-function constructLinkedList(listOfNodes) {
-  const currentNode = listOfNodes[0]
-  const nextNode = null
-
-  listOfNodes.forEach(function())
-
-
-  return 
-}
-
 function produceByDepth(root) {
   const linkedListByDepth = []
-
-
-
-
-  // a list of the nodes in the next depth, from which we make the next depth's linked-list
-  const nextDepth = []
-
-  // it should make a list for each depth
-  // it should make a linked-list out of that list
-
-
 
   return linkedListByDepth
 }
