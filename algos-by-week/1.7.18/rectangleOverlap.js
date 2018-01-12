@@ -3,37 +3,30 @@ function rectangleOverlap (Arectangle, Brectangle) {
   // overlap is an integer that can be evaluated as a boolean
   let horizontalOverlap = verticalOverlap = 0
 
-  console.log('Arectangle', Arectangle)
-  console.log('BRectangle', Brectangle)
+  const ALeftBound = Arectangle[0][0]
+  const ABottomBound = Arectangle[0][1]
+  const ARightBound = Arectangle[1][0]
+  const ATopBound = Arectangle[1][1]
 
-  const AlcX = Arectangle[0][0]
-  const AlcY = Arectangle[0][1]
-  const ArcX = Arectangle[1][0]
-  const ArcY = Arectangle[1][1]
-
-  const BlcX = Brectangle[0][0]
-  const BlcY = Brectangle[0][1]
-  const BrcX = Brectangle[1][0]
-  const BrcY = Brectangle[1][1]
+  const BLeftBound = Brectangle[0][0]
+  const BBottomBound = Brectangle[0][1]
+  const BRightBound = Brectangle[1][0]
+  const BTopBound = Brectangle[1][1]
 
   // are there overlaps?
   // horizontal
-  if (BlcX < ArcX && BlcX > AlcX) {
-    horizontalOverlap = absoluteDifference(BlcX, ArcX)
-  } else if (BrcX > AlcX && BrcX < ArcX) {
-    horizontalOverlapS = absoluteDifference(Brcx, Alcx)
+  if (BLeftBound < ARightBound && BLeftBound > ALeftBound) {
+    horizontalOverlap = absoluteDifference(BLeftBound, ARightBound)
+  } else if (BRightBound > ALeftBound && BRightBound < ARightBound) {
+    horizontalOverlapS = absoluteDifference(BRightBound, ALeftBound)
   }
 
   // vertical
-  if (BlcY < ArcY && BlcY > AlcY) {
-    verticalOverlap = absoluteDifference(BlcY, ArcY)
-  } else if (BrcY > AlcY && BrcY < ArcY) {
-    verticalOverlap = absoluteDifference(BrcY, AlcY)
+  if (BBottomBound < ATopBound && BBottomBound > ABottomBound) {
+    verticalOverlap = absoluteDifference(BBottomBound, ATopBound)
+  } else if (BTopBound > ABottomBound && BTopBound < ATopBound) {
+    verticalOverlap = absoluteDifference(BTopBound, ABottomBound)
   }
-
-  // testing
-  console.log('horizontalOverlap: ', horizontalOverlap)
-  console.log('verticalOverlap: ', verticalOverlap)
 
   return horizontalOverlap * verticalOverlap
 }
