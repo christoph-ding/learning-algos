@@ -10,9 +10,33 @@ function linkedListNode(val, next) {
 }
 
 function produceByDepth(root) {
-  const linkedListByDepth = []
+  let nodesByDepth = []
 
-  return linkedListByDepth
+  let currentLevel = [root]
+  let nextLevel = []
+  let keepGoing = true
+
+  while (keepGoing) {
+    nodesByDepth.forEach(function(node) {
+      if (node.lc) {
+        nextLevel.push(node.lc)
+      }
+      if (node.rc) {
+        nextLevel.push(node.rc)
+      }
+    })
+
+    nodesByDepth.push(currentLevel)
+
+    if (nextLevel.length) {
+      currentLevel = nextLevel
+      nextLevel = []
+    } else {
+      keepGoing = false
+    }
+  }
+
+  return nodesByDepth
 }
 
 // tests
