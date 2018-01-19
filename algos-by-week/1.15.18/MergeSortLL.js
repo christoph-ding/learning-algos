@@ -9,7 +9,7 @@ function mergeSort(head) {
   // find the middle of the list,
   // so that we can have a 'left' and 'right' list to recurse on
   let leftListHead = head
-  let leftListEnd = findMiddle(head)
+  let leftListEnd = findBeforeMiddle(head)
   let rightListHead = leftListEnd.next
   leftListEnd.next = null
 
@@ -24,9 +24,16 @@ function mergeSort(head) {
   // return a sorted-list
 }
 
-function findMiddle(head) {
+function findBeforeMiddle(head) {
   // fast and slow runners!
-  let currentSlow
+  let currentSlow = currentFast = head
+
+  while (currentFast && currentFast.next !== null && currentFast.next.next !== null) {
+    currentSlow = currentSlow.next
+    currentFast = currentFast.next.next
+  }
+
+  return currentSlow
 }
 
 function mergeTwoSortedLists(headOne, headTwo) {
@@ -59,4 +66,6 @@ console.log(logAll(nodeOne))
 console.log(logAll(nodeTwo))
 console.log(' =================== ')
 
-console.log(mergeSort(nodeFour))
+console.log('middle: ', findBeforeMiddle(nodeOne))
+
+// console.log(mergeSort(nodeFour))
