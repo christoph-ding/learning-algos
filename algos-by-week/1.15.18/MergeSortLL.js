@@ -5,7 +5,9 @@ function llNode(val, next) {
 
 function mergeSort(head) {
   // if head represents a single element list, just return head
-
+  if (head.next == null) {
+    return head
+  } else {
   // find the middle of the list,
   // so that we can have a 'left' and 'right' list to recurse on
   let leftListHead = head
@@ -18,10 +20,13 @@ function mergeSort(head) {
 
   // mergeSort the left and the right
   // so that we have 2 sorted lists
+  let leftSortedListHead = mergeSort(leftListHead)
+  let rightSortedListHead = mergeSort(rightListHead)
 
   // merge both sorted lists
-
   // return a sorted-list
+  return combineSortedLists(leftSortedListHead, rightSortedListHead)
+  }
 }
 
 function findBeforeMiddle(head) {
@@ -36,7 +41,7 @@ function findBeforeMiddle(head) {
   return currentSlow
 }
 
-function mergeTwoSortedLists(headOne, headTwo) {
+function combineSortedLists(headOne, headTwo) {
 
 }
 
@@ -66,6 +71,4 @@ console.log(logAll(nodeOne))
 console.log(logAll(nodeTwo))
 console.log(' =================== ')
 
-console.log('middle: ', findBeforeMiddle(nodeOne))
-
-// console.log(mergeSort(nodeFour))
+console.log(mergeSort(nodeOne))
