@@ -55,9 +55,26 @@ function combineSortedLists(headOne, headTwo) {
     currentTwo = headTwo.next
     headOfCombinedList = headTwo
   }
-  // while (currentOne && currentTwo) {
 
-  // }
+  let currentCombinedTail = headOfCombinedList
+
+  while (currentOne && currentTwo) {
+    if (currentOne.val < currentTwo.val) {
+      currentCombinedTail.next = currentOne
+      currentOne = currentOne.next
+    } else if (currentTwo.val < currentOne.val) {
+      currentCombinedTail.next = currentTwo
+      currentTwo = currentTwo.next
+    }
+    currentCombinedTail = currentCombinedTail.next
+  }
+
+  if (currentOne === null) {
+    currentCombinedTail.next = currentTwo
+  } else if (currentTwo === null) {
+    currentCombinedTail.next = currentOne
+  }
+
 
   return headOfCombinedList
 }
@@ -90,3 +107,4 @@ console.log(' =================== ')
 
 // console.log(mergeSort(nodeOne))
 console.log(combineSortedLists(nodeOne, nodeTwo))
+console.log(logAll(nodeOne))
