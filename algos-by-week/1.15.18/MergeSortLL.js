@@ -15,9 +15,6 @@ function mergeSort(head) {
   let rightListHead = leftListEnd.next
   leftListEnd.next = null
 
-  console.log('leftList: ', leftListHead)
-  console.log('rightList: ', rightListHead)
-
   // mergeSort the left and the right
   // so that we have 2 sorted lists
   let leftSortedListHead = mergeSort(leftListHead)
@@ -25,7 +22,8 @@ function mergeSort(head) {
 
   // merge both sorted lists
   // return a sorted-list
-  return combineSortedLists(leftSortedListHead, rightSortedListHead)
+  let combinedList = combineSortedLists(leftSortedListHead, rightSortedListHead)
+  return combinedList
   }
 }
 
@@ -80,13 +78,18 @@ function combineSortedLists(headOne, headTwo) {
 }
 
 // tests
+let nodeSix = new llNode(6)
+let nodeFive = new llNode(5)
 let nodeFour = new llNode(4)
 let nodeThree = new llNode(3)
 let nodeTwo = new llNode(2)
 let nodeOne = new llNode(1)
 
 nodeOne.next = nodeThree
+nodeThree.next = nodeFive
+nodeFive.next = nodeTwo
 nodeTwo.next = nodeFour
+nodeFour.next = nodeSix
 
 function logAll(head) {
   const listNodes = []
@@ -101,10 +104,5 @@ function logAll(head) {
   return listNodes.join(' -> ')
 }
 
-console.log(logAll(nodeOne))
-console.log(logAll(nodeTwo))
-console.log(' =================== ')
-
-// console.log(mergeSort(nodeOne))
-console.log(combineSortedLists(nodeOne, nodeTwo))
+mergeSort(nodeOne)
 console.log(logAll(nodeOne))
