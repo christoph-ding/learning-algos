@@ -42,7 +42,24 @@ function findBeforeMiddle(head) {
 }
 
 function combineSortedLists(headOne, headTwo) {
+  // the smallest of the two input heads will be returned
+  let headOfCombinedList = null
 
+  let currentOne = headOne
+  let currentTwo = headTwo
+
+  if (headOne.val < headTwo.val || headTwo === null) {
+    currentOne = headOne.next
+    headOfCombinedList = headOne
+  } else if (headTwo.val < headTwo.val || headOne === null) {
+    currentTwo = headTwo.next
+    headOfCombinedList = headTwo
+  }
+  // while (currentOne && currentTwo) {
+
+  // }
+
+  return headOfCombinedList
 }
 
 // tests
@@ -71,4 +88,5 @@ console.log(logAll(nodeOne))
 console.log(logAll(nodeTwo))
 console.log(' =================== ')
 
-console.log(mergeSort(nodeOne))
+// console.log(mergeSort(nodeOne))
+console.log(combineSortedLists(nodeOne, nodeTwo))
