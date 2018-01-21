@@ -17,7 +17,7 @@ function produceByDepth(root) {
   let keepGoing = true
 
   while (keepGoing) {
-    nodesByDepth.forEach(function(node) {
+    currentLevel.forEach(function(node) {
       if (node.lc) {
         nextLevel.push(node.lc)
       }
@@ -48,4 +48,4 @@ let nodeThree = new treeNode(3)
 let nodeTwo = new treeNode(2)
 let nodeOne = new treeNode(1, nodeTwo, nodeThree)
 
-console.log(nodeOne)
+console.log(produceByDepth(nodeOne))
