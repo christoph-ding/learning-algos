@@ -35,7 +35,15 @@ treeNode.prototype.insert = function(node) {
 }
 
 treeNode.prototype.traverseInOrder = function() {
+  if (this.lc) {
+    this.lc.traverseInOrder()
+  }
 
+  console.log(this.val)
+
+  if (this.rc) {
+    this.rc.traverseInOrder()
+  }
 }
 
 // tests
@@ -54,4 +62,5 @@ nodeOne.insert(nodeThree)
 nodeOne.insert(nodeFour)
 nodeOne.insert(nodeFive)
 nodeOne.insert(nodeSix)
-console.log(nodeOne) // should have lc and rc
+
+nodeOne.traverseInOrder() // should go 'in order' from smallest to largest
