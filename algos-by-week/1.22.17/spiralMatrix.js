@@ -7,21 +7,35 @@ function spiralMatrix(matrix) {
   let boundDown = Math.max(matrix.length - 1, 0)
   let boundLeft = 0
 
-  while (stillGoing()) {
+  while (true) {
     goRight()
     boundUp = boundUp + 1
+
+    if (!(stillGoing())) {
+      break
+    }
 
     goDown()
     boundRight = boundRight - 1
 
+    if (!(stillGoing())) {
+      break
+    }
+
     goLeft()
     boundDown = boundDown - 1
 
+    if (!(stillGoing())) {
+      break
+    }
+
     goUp()
     boundLeft = boundLeft + 1
+    
+    if (!(stillGoing())) {
+      break
+    }
   }
-
-  console.log(matrix[boundUp][boundLeft])
 
   function goRight() {
     for (let x = boundLeft; x <= boundRight; x++) {
@@ -52,7 +66,7 @@ function spiralMatrix(matrix) {
   }
 
   function stillGoing() {
-    return ((boundRight !== boundLeft) && (boundDown !== boundUp))
+    return ((boundRight >= boundLeft) && (boundDown >= boundUp))
   }
 
   function action() {
@@ -67,5 +81,29 @@ const matrixOne = [
         [8, 9, 4],
         [7, 6, 5]
       ]
+const matrixTwo = [
+        [1, 2, 3],
+        [6, 5, 4],
+      ]
+const matrixThree = [
+        [1, 2, 3]
+      ]
+const matrixFour = [
+        [ 1,  2, 3],
+        [10, 11, 4],
+        [ 9, 12, 5],
+        [ 8,  7, 6],
+      ]
+
+console.log('======================\n')
 
 spiralMatrix(matrixOne)
+console.log('\n======================\n')
+
+spiralMatrix(matrixTwo)
+console.log('\n======================\n')
+
+spiralMatrix(matrixThree)
+console.log('\n======================\n')
+spiralMatrix(matrixFour)
+
