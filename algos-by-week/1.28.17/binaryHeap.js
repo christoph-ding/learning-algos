@@ -11,8 +11,6 @@ BinaryHeap.prototype.insert = function(val) {
   this.heap[this.size] = val
   this.percUp(this.size)
   this.size = this.size + 1
-  // console.log('insert: ', val, ' heap after: ', this.heap)
-  // console.log('===================')
 }
 
 BinaryHeap.prototype.extract = function() {
@@ -30,25 +28,12 @@ BinaryHeap.prototype.extract = function() {
 }
 
 BinaryHeap.prototype.percDown = function() {
-  let parentIndx = 0
-  let parentValue = this.heap[parentIndx]
+  let calc = () => {
+    parentValue = this.heap[parentIndx]
 
-  // which child is smaller?
-  let lcIndx = null
-  let lcValue = null
-  let rcIndx = null
-  let rcValue = null
-  let oneToUseIndx = null
-  let oneToUseValue = null
-
-  // 
-  while ()
-
-
-
-  function calc() {
     lcIndx = parentIndx * 2 + 1
     lcValue = this.heap[lcIndx]
+
     rcIndx = parentIndx * 2 + 2
     rcValue = this.heap[rcIndx]
 
@@ -61,6 +46,32 @@ BinaryHeap.prototype.percDown = function() {
     }
     console.log('lc: ', lcValue, ' rc: ', rcValue, ' use: ', oneToUseValue)
   }
+
+  let parentIndx = 0
+  let parentValue = null
+  let lcIndx = null
+  let lcValue = null
+  let rcIndx = null
+  let rcValue = null
+  let oneToUseIndx = null
+  let oneToUseValue = null
+
+  calc()
+
+  // compare parent to small child, swap if neccesary, until no swap is made, or parent is a leaf
+  while (lcIndx) {
+    if (parentValue > oneToUseValue) {
+      // swap
+      this.heap[parentIndx] = oneToUseValue
+      this.heap[oneToUseIndx] = parentValue
+
+      parentIndx = oneToUseIndx
+    } else {
+      break
+    }
+    calc()
+  }
+
 }
 
 BinaryHeap.prototype.percUp = function(indx) {
@@ -95,6 +106,8 @@ testBinaryHeap.insert(100)
 testBinaryHeap.insert(50)
 testBinaryHeap.insert(10)
 testBinaryHeap.insert(7)
+testBinaryHeap.insert(3)
 console.log(testBinaryHeap)
 
 console.log('min: ', testBinaryHeap.extract())
+console.log(testBinaryHeap)
