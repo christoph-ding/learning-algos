@@ -23,7 +23,6 @@ BinaryHeap.prototype.extract = function() {
 
   // percDown
   this.percDown()
-
   return minimum
 }
 
@@ -44,7 +43,6 @@ BinaryHeap.prototype.percDown = function() {
       oneToUseIndx = rcIndx
       oneToUseValue = rcValue
     }
-    console.log('lc: ', lcValue, ' rc: ', rcValue, ' use: ', oneToUseValue)
   }
 
   let parentIndx = 0
@@ -59,7 +57,7 @@ BinaryHeap.prototype.percDown = function() {
   calc()
 
   // compare parent to small child, swap if neccesary, until no swap is made, or parent is a leaf
-  while (lcIndx) {
+  while (lcValue) {
     if (parentValue > oneToUseValue) {
       // swap
       this.heap[parentIndx] = oneToUseValue
@@ -109,5 +107,11 @@ testBinaryHeap.insert(7)
 testBinaryHeap.insert(3)
 console.log(testBinaryHeap)
 
-console.log('min: ', testBinaryHeap.extract())
+console.log("extracted min: ", testBinaryHeap.extract())
+console.log(testBinaryHeap)
+
+console.log("extracted min: ", testBinaryHeap.extract())
+console.log(testBinaryHeap)
+
+console.log("extracted min: ", testBinaryHeap.extract())
 console.log(testBinaryHeap)
