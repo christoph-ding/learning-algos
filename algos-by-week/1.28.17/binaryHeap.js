@@ -42,7 +42,9 @@ BinaryHeap.prototype.percDown = function() {
   let oneToUseValue = null
 
   // 
-  while ()
+  calc()
+
+  while (lcValue || rc)
 
 
 
