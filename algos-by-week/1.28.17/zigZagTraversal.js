@@ -4,19 +4,19 @@ function treeNode(val, lc, rc) {
   this.rc = rc || null
 }
 
-function zigZagTraversal(root) {
+function zigZagTraversalOne(root) {
   const output = []
   let currentLevel = [root]
   let currentVals = []
   let nextLevel = []
-  let zigRight = true
+  let zigRight = false
 
   while (currentLevel.length) {
     for (let i = currentLevel.length - 1; i >= 0; i--) {
       let currentNode = currentLevel[i]
+      currentVals.push(currentNode.val)
 
       console.log('currentNode: ', currentNode.val)
-      currentVals.push(currentNode.val)
 
       if (zigRight) {
         if (currentNode.rc) {
@@ -25,7 +25,7 @@ function zigZagTraversal(root) {
         if (currentNode.lc) {
           nextLevel.push(currentNode.lc)
         }
-      } else if (!(zigRight)) {
+      } else {
         if (currentNode.lc) {
           nextLevel.push(currentNode.lc)
         }
@@ -34,12 +34,12 @@ function zigZagTraversal(root) {
         }
       }
     }
+    console.log(nextLevel)
     output.push(currentVals.slice())
     currentVals = []
     currentLevel = nextLevel
     nextLevel = []
     zigRight = !(zigRight)
-    console.log('current: ', currentLevel)
   }
 
   return output
@@ -53,4 +53,4 @@ let nodeFour = new treeNode(1)
 let nodeThree = new treeNode(20, nodeSix, nodeSeven)
 let nodeTwo = new treeNode(9, nodeFour, nodeFive)
 let nodeOne = new treeNode(3, nodeTwo, nodeThree)
-console.log(zigZagTraversal(nodeOne))
+console.log(zigZagTraversalOne(nodeOne))
