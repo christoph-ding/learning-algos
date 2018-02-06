@@ -52,8 +52,6 @@ function addTwoNumbersLL(numOne, numTwo) {
 
   // testing
   let currentLogging = starterLL.next
-  console.log('=======================')
-
   while (currentLogging) {
     console.log(currentLogging)
     currentLogging = currentLogging.next
