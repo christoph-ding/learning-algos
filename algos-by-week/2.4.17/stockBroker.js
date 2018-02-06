@@ -3,7 +3,11 @@ function stockBroker(pricesByDay) {
   let maxProfitSoFar = 0
 
   pricesByDay.forEach(function(dailyPrice) {
+    // first, if there is lowestPriceSoFar
+      // do some calculation
 
+    // 2nd, if there is no lowestPriceSoFar or if 
+    // the current dailyPrice is lower, set new lowestPriceSoFar 
   })
 
   return maxProfitSoFar
