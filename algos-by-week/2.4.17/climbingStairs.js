@@ -39,5 +39,5 @@ function runClimbStairsNoMemo(n) {
 // more cases
 // console.log(runClimbStairsNoMemo(3))
 // console.log(runClimbStairsNoMemo(4))
-console.log(runClimbStairsNoMemo(5)) 
+// console.log(runClimbStairsNoMemo(5)) 
 console.log(runClimbStairsNoMemo(6)) 
