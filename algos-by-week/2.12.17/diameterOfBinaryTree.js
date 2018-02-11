@@ -6,6 +6,10 @@ function treeNode(val, lc, rc) {
 
 function diameterOfTree(root) {
 
+
+
+
+  
 }
 
 // test
